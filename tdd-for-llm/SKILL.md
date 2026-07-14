@@ -46,7 +46,8 @@ Keep the loop to minutes. If a step drags, your step was too big — see Child T
 2. **Check local coverage** of each unit you'll change — read the tests, or run the suite under coverage and look at those specific functions.
 3. **Branch per seam:**
    - *Covered* → refactor in small steps, run the suite after each; any red → undo the last step, don't debug forward.
-   - *Not covered* → it's effectively legacy. Write a **characterization test** pinning its current behavior first (see `references/legacy-coverage.md`), then refactor.
+   - *Not covered but testable* → write a **characterization test** pinning its current behavior first (see `references/legacy-coverage.md`), then refactor.
+   - *Not covered and hard to test* (dependencies block the harness — DB, network, globals, singletons, framework types) → use the **`working-with-legacy-code`** skill to break dependencies and get it under test, then come back to the loop.
 4. **Don't chase whole-codebase coverage.** Pin only the seams you're changing.
 
 ## Before you start: the Test List
