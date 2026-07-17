@@ -17,6 +17,7 @@ against what we took (see [Checking for upstream changes](#checking-for-upstream
 | `tdd/references/good-and-bad-tests.md` | `skills/engineering/tdd/tests.md` | `9603c1c` | Reproduced verbatim; attribution footer appended |
 | `tdd/references/mocking.md` | `skills/engineering/tdd/mocking.md` | `9603c1c` | Reproduced, with minor Markdown formatting fixes; attribution footer appended |
 | `grilling/SKILL.md` | `skills/productivity/grilling/SKILL.md` | `9603c1c` | Adapted and extended |
+| `to-tickets/SKILL.md` | `skills/engineering/to-tickets/SKILL.md` | `9603c1c` | Adapted; stripped to local markdown output |
 | `*/agents/openai.yaml` | that repo's `agents/openai.yaml` convention | `9603c1c` | Format followed; no content copied |
 
 ### Checking for upstream changes
