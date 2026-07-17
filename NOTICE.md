@@ -18,6 +18,8 @@ against what we took (see [Checking for upstream changes](#checking-for-upstream
 | `tdd/references/mocking.md` | `skills/engineering/tdd/mocking.md` | `9603c1c` | Reproduced, with minor Markdown formatting fixes; attribution footer appended |
 | `grilling/SKILL.md` | `skills/productivity/grilling/SKILL.md` | `9603c1c` | Adapted and extended |
 | `to-tickets/SKILL.md` | `skills/engineering/to-tickets/SKILL.md` | `9603c1c` | Adapted; stripped to local markdown output |
+| `code-review/SKILL.md` | `skills/engineering/code-review/SKILL.md` | `9603c1c` | Adapted; both axes kept, smell baseline moved to `references/` |
+| `code-review/references/code-smells.md` | the smell baseline in `skills/engineering/code-review/SKILL.md` | `9603c1c` | Reproduced, reformatted as a reference file and extended |
 | `*/agents/openai.yaml` | that repo's `agents/openai.yaml` convention | `9603c1c` | Format followed; no content copied |
 
 ### Checking for upstream changes
@@ -68,3 +70,8 @@ The `tdd` and `working-with-legacy-code` skills distill ideas from Kent Beck's
 *Test-Driven Development: By Example* and Michael Feathers' *Working Effectively with
 Legacy Code* respectively. Those books remain the property of their authors and
 publishers; each skill cites its source. The wording of the skills is original.
+
+`code-review/references/code-smells.md` names the code smells catalogued in Martin Fowler's
+*Refactoring* (ch. 3). The wording of each entry comes from Matt Pocock's compression of that
+catalogue (see the table above), not from the book itself; the book remains the property of its
+author and publisher.

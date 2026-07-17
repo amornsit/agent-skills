@@ -35,6 +35,7 @@ If an agent has no skills directory, the procedure still works read as-is: point
 - **[working-with-legacy-code](working-with-legacy-code/SKILL.md)** — getting untested, hard-to-test code safely under test, adapted from Michael Feathers' *Working Effectively with Legacy Code*. The Legacy Code Change Algorithm, characterization tests, seams, and dependency-breaking techniques.
 - **[grilling](grilling/SKILL.md)** — grill the user relentlessly about a plan, decision, or idea to stress-test their thinking, one question at a time. Adapted from Matt Pocock's *grilling* skill, extended with a facts-first opening move, a stopping heuristic keyed to the stakes, and a nudge toward structured question tools.
 - **[to-tickets](to-tickets/SKILL.md)** — break a plan or conversation into tracer-bullet vertical slices, each sized to one context window and declaring the tickets that block it, written to `.scratch/` as one markdown file per ticket. Includes the expand–contract sequence for wide refactors that can't be vertically sliced. Adapted from Matt Pocock's *to-tickets* skill, stripped to local markdown output.
+- **[code-review](code-review/SKILL.md)** — review a diff along two axes kept deliberately separate: **Standards** (repo conventions plus a [smell baseline](code-review/references/code-smells.md) from Fowler's *Refactoring*) and **Spec** (does it do what was actually asked?). Neither axis is allowed to mask the other. Adapted from Matt Pocock's *code-review* skill.
 
 ### How tdd and working-with-legacy-code relate
 
