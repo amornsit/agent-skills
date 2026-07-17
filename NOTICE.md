@@ -8,14 +8,32 @@ notices.
 
 Source: <https://github.com/mattpocock/skills>
 
-The following files are copied from, or adapted from, that repository:
+The following files are copied from, or adapted from, that repository. **Copied at** records the
+upstream commit the copy was taken from, so a later revision of that file upstream can be diffed
+against what we took (see [Checking for upstream changes](#checking-for-upstream-changes) below).
 
-| File here | Derived from | Relationship |
-|-----------|--------------|--------------|
-| `tdd/references/good-and-bad-tests.md` | `skills/engineering/tdd/tests.md` | Reproduced, with minor Markdown formatting fixes |
-| `tdd/references/mocking.md` | `skills/engineering/tdd/mocking.md` | Reproduced, with minor Markdown formatting fixes |
-| `grilling/SKILL.md` | `skills/productivity/grilling/SKILL.md` | Adapted and extended |
-| `*/agents/openai.yaml` | that repo's `agents/openai.yaml` convention | Format followed |
+| File here | Derived from | Copied at | Relationship |
+|-----------|--------------|-----------|--------------|
+| `tdd/references/good-and-bad-tests.md` | `skills/engineering/tdd/tests.md` | `9603c1c` | Reproduced verbatim; attribution footer appended |
+| `tdd/references/mocking.md` | `skills/engineering/tdd/mocking.md` | `9603c1c` | Reproduced, with minor Markdown formatting fixes; attribution footer appended |
+| `grilling/SKILL.md` | `skills/productivity/grilling/SKILL.md` | `9603c1c` | Adapted and extended |
+| `*/agents/openai.yaml` | that repo's `agents/openai.yaml` convention | `9603c1c` | Format followed; no content copied |
+
+### Checking for upstream changes
+
+Every copy above was taken from upstream `9603c1c` (`main` as of 2026-07-17). To see whether
+anything we derived from has changed upstream since:
+
+```sh
+gh api repos/mattpocock/skills/compare/9603c1c...main --jq '.files[].filename'
+```
+
+Cross-reference the output against the "Derived from" column. Note that these files each last
+changed upstream well before our copy point — `tests.md` at `43ea088`, `mocking.md` at `62f43a1`,
+`grilling/SKILL.md` at `170ad48` — so the copies are of settled, not in-flight, versions.
+
+When copying a new file from that repo, add a row and set **Copied at** to the upstream `main` SHA
+you took it from — `gh api repos/mattpocock/skills/commits/main --jq '.sha[0:7]'`.
 
 Original notice:
 
