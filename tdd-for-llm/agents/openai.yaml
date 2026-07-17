@@ -1,0 +1,3 @@
+interface:
+  display_name: "TDD for LLM"
+  short_description: "Red/green/refactor discipline for a coding agent"

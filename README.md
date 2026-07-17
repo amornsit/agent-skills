@@ -25,6 +25,7 @@ Edit the files here; the change applies everywhere the symlink points.
 
 - **[tdd-for-llm](tdd-for-llm/SKILL.md)** — test-driven development discipline for an LLM coding agent, adapted from Kent Beck's *Test-Driven Development: By Example*. Enforces red→green→refactor, one failing test at a time, the three gears to green (Fake It / Triangulate / Obvious Implementation), and characterization tests before refactoring untested code. Companion to the [book summary](../summaries/test-driven-development-by-example-summary.md).
 - **[working-with-legacy-code](working-with-legacy-code/SKILL.md)** — getting untested, hard-to-test code safely under test, adapted from Michael Feathers' *Working Effectively with Legacy Code*. The Legacy Code Change Algorithm, characterization tests, seams, and dependency-breaking techniques.
+- **[grilling](grilling/SKILL.md)** — grill the user relentlessly about a plan, decision, or idea to stress-test their thinking, one question at a time. Adapted from Matt Pocock's *grilling* skill, extended with a facts-first opening move, a stopping heuristic keyed to the stakes, and a nudge toward structured question tools.
 
 ### How these two relate
 
