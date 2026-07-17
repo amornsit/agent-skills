@@ -1,0 +1,18 @@
+// markdownlint-cli2 config — https://github.com/DavidAnson/markdownlint-cli2
+// Tuned for a prose knowledge base (see CONVENTIONS.md).
+{
+  "config": {
+    "default": true,
+    "MD013": false,                     // line length — notes are prose, not hard-wrapped
+    "MD033": false,                     // inline HTML — templates use <Title> placeholders
+    "MD034": false,                     // bare URLs — allowed in source citations
+    "MD060": false,                     // table pipe spacing — compact tables are fine
+    "MD024": { "siblings_only": true }, // allow same heading text in different sections
+    // Notes carry a frontmatter `title:` AND a body `# H1` (see CONVENTIONS.md).
+    // Don't treat the frontmatter title as a heading, so the two don't collide...
+    "MD025": { "front_matter_title": "" }, // ...as "multiple H1s", and
+    "MD041": { "front_matter_title": "" }  // ...still require the body to open with an H1.
+  },
+  "globs": ["**/*.md"],
+  "ignores": ["templates/**", "tmp/**", ".git/**"]
+}

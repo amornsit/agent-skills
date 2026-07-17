@@ -1,0 +1,23 @@
+# Local git hooks. Install the runner once, then enable it in this repo:
+#
+#   brew install pre-commit        # or: pipx install pre-commit / uv tool install pre-commit
+#   pre-commit install
+#
+# markdownlint-cli2 runs offline via a Node environment that pre-commit manages —
+# you do not install Node or markdownlint yourself. Link checking (lychee) runs in
+# CI; see .github/workflows/lint.yml.
+minimum_pre_commit_version: "3.5.0"
+
+repos:
+  - repo: https://github.com/DavidAnson/markdownlint-cli2
+    rev: v0.23.0
+    hooks:
+      - id: markdownlint-cli2
+
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v6.0.0
+    hooks:
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
+        args: [--markdown-linebreak-ext=md]
+      - id: check-yaml
