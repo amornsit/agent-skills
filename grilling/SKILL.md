@@ -22,4 +22,6 @@ Interview me relentlessly about a plan, decision, or idea until we reach a share
 
 ---
 
-*Adapted from Matt Pocock's "grilling" skill (github.com/mattpocock/skills). Extends the original with a facts-first opening move, a stopping heuristic keyed to the stakes of the decision, and a nudge toward structured question tools.*
+*Adapted from Matt Pocock's "grilling" skill (github.com/mattpocock/skills) — MIT © Matt Pocock.
+Extends the original with a facts-first opening move, a stopping heuristic keyed to the stakes of
+the decision, and a nudge toward structured question tools. See [NOTICE.md](../NOTICE.md).*

@@ -1,6 +1,6 @@
 # Agent Skills
 
-Portable [Claude Code](https://docs.claude.com/en/docs/claude-code) skills, version-controlled here as the **source of truth**. Each skill is a top-level directory with a `SKILL.md` (frontmatter + procedure) and optional `references/` files loaded on demand.
+Portable, agent-agnostic skills, version-controlled here as the **source of truth**. They are written for any LLM coding agent — [Claude Code](https://docs.claude.com/en/docs/claude-code), Codex, Cursor, or anything else that can load a Markdown procedure — not for one vendor. Each skill is a top-level directory with a `SKILL.md` (frontmatter + procedure) and optional `references/` files loaded on demand.
 
 ## Layout
 
@@ -8,19 +8,26 @@ Portable [Claude Code](https://docs.claude.com/en/docs/claude-code) skills, vers
 <skill-name>/
   SKILL.md          # name, description (the trigger), and the procedure
   agents/
-    openai.yaml     # interface descriptor (display name, short description)
+    openai.yaml     # per-agent interface descriptor (display name, short description)
   references/       # detailed material, loaded only when needed
 ```
 
+`SKILL.md` is the portable core and carries no vendor-specific instructions. Anything an individual
+agent needs on top of that lives in `agents/`, so adding support for a new agent means adding a
+descriptor there rather than editing the procedure.
+
 ## How these are used
 
-Claude Code discovers skills from `~/.claude/skills/` (personal) or a project's `.claude/skills/`. To activate a skill kept here, symlink it into your personal skills directory so this repo stays the single place you edit:
+Each agent looks for skills in its own directory, so activate a skill by symlinking it from here —
+this repo stays the single place you edit, and the change applies everywhere the symlinks point:
 
 ```sh
-ln -s "$PWD/tdd" ~/.claude/skills/tdd
+ln -s "$PWD/tdd" ~/.claude/skills/tdd     # Claude Code (or a project's .claude/skills/)
+ln -s "$PWD/tdd" ~/.codex/skills/tdd      # another agent — adjust the path to its convention
 ```
 
-Edit the files here; the change applies everywhere the symlink points.
+If an agent has no skills directory, the procedure still works read as-is: point the agent at the
+`SKILL.md` (paste it, include it in the system prompt, or reference the file) and it will follow.
 
 ## Skills here
 
@@ -56,3 +63,11 @@ Markdown style and links are checked automatically — there's no Python or Node
 
 - **In CI:** [`.github/workflows/lint.yml`](.github/workflows/lint.yml) runs `markdownlint-cli2`
   plus [`lychee`](https://github.com/lycheeverse/lychee) dead-link checking on every push and PR.
+
+## License
+
+[MIT](LICENSE) — use, copy, and adapt these skills freely.
+
+Portions are derived from MIT-licensed work by [Matt Pocock](https://github.com/mattpocock/skills);
+those notices are collected in [NOTICE.md](NOTICE.md). Skills that distill a book cite their source
+and remain original wording.
