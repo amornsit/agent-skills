@@ -8,8 +8,8 @@ description: >-
   singletons, framework classes) block testing, or when asked to characterize,
   pin, or break dependencies in existing code. Teaches the Legacy Code Change
   Algorithm, characterization tests, seams, and dependency-breaking techniques —
-  then HANDS OFF to the tdd-for-llm skill for the actual change. Do NOT use for
-  greenfield code or code already under test — go straight to tdd-for-llm for
+  then HANDS OFF to the tdd skill for the actual change. Do NOT use for
+  greenfield code or code already under test — go straight to tdd for
   those.
 ---
 
@@ -21,8 +21,8 @@ testing. This skill's one job: **get the code under test safely, with the smalle
 possible edits**, so that a real change can then be made test-first.
 
 It stops where it succeeds. Once the code is pinned by tests, you're no longer in
-legacy territory — **hand off to `tdd-for-llm`** for the change itself (red → green →
-refactor). This skill covers steps 1–4 below; `tdd-for-llm` owns step 5.
+legacy territory — **hand off to `tdd`** for the change itself (red → green →
+refactor). This skill covers steps 1–4 below; `tdd` owns step 5.
 
 An LLM agent's temptation here is the dangerous one: read the tangled code and
 rewrite it directly. Don't. Untested edits to legacy code are exactly how
@@ -52,7 +52,7 @@ When you must change legacy code, follow these five steps:
    running the method under test. Do this *conservatively* (see Seams + the
    `references/dependency-breaking-techniques.md` catalog).
 4. **Write tests** — **characterization tests** that pin current behavior (below).
-5. **Make changes and refactor** — **→ switch to `tdd-for-llm`.** With the code now
+5. **Make changes and refactor** — **→ switch to `tdd`.** With the code now
    under test, add the change test-first and refactor under a green bar.
 
 The goal every session: make the functional change *and* leave the area under test.
@@ -75,7 +75,7 @@ a future edit changes behavior. Feathers' algorithm:
 code *does today* — that's the baseline. If something looks wrong, keep the test but
 mark it suspicious and check the impact of fixing it separately; do **not** "fix" it
 while pinning (that changes behavior, defeating the net). Fix it afterward as its own
-`tdd-for-llm` cycle where the failing test states intended behavior.
+`tdd` cycle where the failing test states intended behavior.
 
 **Where to stop** (coverage is infinite otherwise): these aren't black-box tests —
 *read the code you're characterizing*. Get curious, write cases until you understand
@@ -130,12 +130,12 @@ code minimally:
 These don't cover the old code — they stop it from getting worse while you add value,
 and give you a tested beachhead to expand from.
 
-## Boundary — this skill vs `tdd-for-llm`
+## Boundary — this skill vs `tdd`
 
 - **Code has no / poor tests, or resists testing** → **this skill.** Get it under test.
-- **Code is greenfield, or already under test** → **`tdd-for-llm` directly.**
+- **Code is greenfield, or already under test** → **`tdd` directly.**
 - **Mid-task handoff:** the moment the seam you're changing is pinned green, switch to
-  `tdd-for-llm` for the change. They chain; they don't compete.
+  `tdd` for the change. They chain; they don't compete.
 
 ## Reference
 

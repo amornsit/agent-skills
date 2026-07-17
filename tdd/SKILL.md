@@ -1,5 +1,5 @@
 ---
-name: tdd-for-llm
+name: tdd
 description: >-
   Test-driven development discipline for an LLM coding agent, adapted from Kent
   Beck's "Test-Driven Development: By Example". Use when writing or changing code
@@ -14,7 +14,7 @@ description: >-
   with no behavior to pin down.
 ---
 
-# TDD for LLM
+# TDD
 
 Kent Beck's TDD, translated into a discipline an LLM coding agent can follow in a
 tool loop. An agent's failure mode is the opposite of a human's: you can generate
@@ -81,6 +81,14 @@ When a defect is reported, the first thing you write is the **smallest failing t
 - **Evident / Test Data** — Put the expected value and its derivation right in the test so a reader sees *why* it's correct (`100 / 2 * (1 - 0.015)`, not a magic `49.25`). Use the simplest data that still forces the design; never reuse one constant to mean two things.
 - **Test only what you wrote** — conditionals, loops, operations, polymorphism *you* authored. Don't test the language or third-party libraries unless you distrust them (then write a **Learning Test** that documents the behavior you rely on).
 
+## What makes a test worth keeping
+
+The loop tells you *when* to write a test; this tells you whether the test is any good. These are the anti-patterns an LLM falls into most — a test can be green, isolated, and still worthless. See `references/good-and-bad-tests.md` and `references/mocking.md` for worked examples.
+
+- **Test behavior through the public interface, not internals.** A test should read like a specification of what the code does (`user can checkout with valid cart`) and survive any refactor that keeps behavior the same. If it breaks when you restructure code whose behavior didn't change, it was testing the wrong thing. Tells: asserting on private methods, on call counts/order of internal collaborators, or verifying through a side channel (querying the DB directly instead of reading back through the interface).
+- **Never write a tautological test.** If the expected value is computed the way the code computes it — `expect(add(a, b)).toBe(a + b)`, a `reduce` that mirrors the implementation, a snapshot derived by hand the same way — the test passes by construction and can never disagree with the code. The expected value must come from an *independent* source: a known-good literal, a worked example, the spec. (This is the LLM failure mode; guard against it every cycle.)
+- **Mock only at system boundaries** — external APIs, the database (prefer a real test DB where you can), time, randomness, the filesystem. Never mock your own classes, internal collaborators, or anything you control; mocking internals is how you get tests coupled to structure. Design boundaries for mockability with dependency injection and specific SDK-style methods rather than one generic fetcher.
+
 ## When you get stuck
 
 - **Child Test** — A test turned out too big (needs several changes to pass)? Delete/park it, write a smaller test for one broken piece, get it green, then reintroduce the bigger one.
@@ -93,7 +101,9 @@ When a defect is reported, the first thing you write is the **smallest failing t
 
 ## Reference
 
-`references/patterns.md` — the full pattern catalog (red-bar, green-bar, testing, and refactoring patterns) distilled from Part III of the book, for when you need the detailed form of a pattern named above.
+- `references/patterns.md` — the full pattern catalog (red-bar, green-bar, testing, and refactoring patterns) distilled from Part III of the book, for when you need the detailed form of a pattern named above.
+- `references/good-and-bad-tests.md` — side-by-side good/bad test examples (implementation-coupled, tautological, side-channel verification), from Matt Pocock's `tdd` skill.
+- `references/mocking.md` — when and where to mock, dependency injection, and SDK-style interfaces for mockability, from Matt Pocock's `tdd` skill.
 
 ---
 
