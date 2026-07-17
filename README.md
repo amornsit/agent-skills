@@ -37,6 +37,7 @@ If an agent has no skills directory, the procedure still works read as-is: point
 - **[to-tickets](to-tickets/SKILL.md)** — break a plan or conversation into tracer-bullet vertical slices, each sized to one context window and declaring the tickets that block it, written to `.scratch/` as one markdown file per ticket. Includes the expand–contract sequence for wide refactors that can't be vertically sliced. Adapted from Matt Pocock's *to-tickets* skill, stripped to local markdown output.
 - **[code-review](code-review/SKILL.md)** — review a diff along two axes kept deliberately separate: **Standards** (repo conventions plus a [smell baseline](code-review/references/code-smells.md) from Fowler's *Refactoring*) and **Spec** (does it do what was actually asked?). Neither axis is allowed to mask the other. Adapted from Matt Pocock's *code-review* skill.
 - **[implement](implement/SKILL.md)** — build the work from a spec or a set of `to-tickets` tickets: work the frontier one ticket at a time, drive real behaviour test-first with `tdd`, then check the result with `code-review`. The glue that connects the three. Adapted from Matt Pocock's *implement* skill.
+- **[resolving-merge-conflicts](resolving-merge-conflicts/SKILL.md)** — resolve an in-progress git merge or rebase: understand each side's intent from its commits and PRs, preserve both where possible, run the project's checks, then finish. Adapted from Matt Pocock's *resolving-merge-conflicts* skill.
 
 ### How tdd and working-with-legacy-code relate
 

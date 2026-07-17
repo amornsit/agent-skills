@@ -20,6 +20,7 @@ against what we took (see [Checking for upstream changes](#checking-for-upstream
 | `to-tickets/SKILL.md` | `skills/engineering/to-tickets/SKILL.md` | `9603c1c` | Adapted; stripped to local markdown output |
 | `code-review/SKILL.md` | `skills/engineering/code-review/SKILL.md` | `9603c1c` | Adapted; both axes kept, smell baseline moved to `references/` |
 | `implement/SKILL.md` | `skills/engineering/implement/SKILL.md` | `9603c1c` | Adapted; cross-skill references repointed at this repo |
+| `resolving-merge-conflicts/SKILL.md` | `skills/engineering/resolving-merge-conflicts/SKILL.md` | `9603c1c` | Reproduced; body heading and richer description added, procedure unchanged |
 | `code-review/references/code-smells.md` | the smell baseline in `skills/engineering/code-review/SKILL.md` | `9603c1c` | Reproduced, reformatted as a reference file and extended |
 | `*/agents/openai.yaml` | that repo's `agents/openai.yaml` convention | `9603c1c` | Format followed; no content copied |
 
