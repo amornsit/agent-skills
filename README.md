@@ -113,6 +113,17 @@ Markdown style and links are checked automatically — there's no Python or Node
 
 [MIT](LICENSE) — use, copy, and adapt these skills freely.
 
-Portions are derived from MIT-licensed work by [Matt Pocock](https://github.com/mattpocock/skills);
-those notices are collected in [NOTICE.md](NOTICE.md). Skills that distill a book cite their source
-and remain original wording.
+**Every skill in this repository derives from [Matt Pocock](https://github.com/mattpocock)'s
+[mattpocock/skills](https://github.com/mattpocock/skills), used under the MIT licence and
+© 2026 Matt Pocock.** The procedures are substantially his: measured against upstream `9603c1c`,
+the median skill is ~89% his prose word-for-word, and the largest ones — the ones carrying most of
+the instruction — run 84–98%.
+
+What is ours is the plumbing around them: a local-markdown default for every skill that reads or
+writes issues, cross-skill links repointed into this repo, a two-harness invocation contract, and a
+handful of additions named individually in each file's footer. Those are catalogued per file in
+[NOTICE.md](NOTICE.md), which also reproduces his licence in full, and the rules behind them are in
+[`docs/import-policy.md`](docs/import-policy.md).
+
+If you find these useful, the credit belongs upstream — go star
+[mattpocock/skills](https://github.com/mattpocock/skills).

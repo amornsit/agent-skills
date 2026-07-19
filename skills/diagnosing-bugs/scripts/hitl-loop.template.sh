@@ -1,4 +1,10 @@
 #!/usr/bin/env bash
+#
+# From Matt Pocock's "skills" repo (github.com/mattpocock/skills), MIT licensed.
+# Copyright (c) 2026 Matt Pocock. Permission is hereby granted, free of charge, to
+# any person obtaining a copy of this software to deal in it without restriction,
+# provided this notice is included. Provided "as is", without warranty of any kind.
+#
 # Human-in-the-loop reproduction loop.
 # Copy this file, edit the steps below, and run it.
 # The agent runs the script; the user follows prompts in their terminal.

@@ -192,6 +192,10 @@ Every ported file gets a footer:
 - **Template files are exempt.** A reference file that exists to be *copied into the user's repo*
   (the `issue-tracker-*.md` seeds) carries a footer that would become dead weight at its
   destination. Keep the footer in this repo and instruct the skill to strip it on copy.
+- **A file that travels carries its own notice.** Where the exempt file is upstream's work rather
+  than a format we describe — `scripts/hitl-loop.template.sh` is the case — it needs a
+  **self-contained** credit in the file itself: author, MIT, copyright line, no `NOTICE.md` link,
+  since that link is dead at the destination. MIT requires the notice to accompany the copy.
   **The test is whether the file itself travels.** A file that *contains* a fenced template the
   skill transcribes is read in place and is not exempt; only a file that gets copied wholesale is.
 - **Removals count as local changes too.** De-vendoring a harness-specific instruction, or dropping
