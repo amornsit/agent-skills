@@ -1,5 +1,5 @@
 interface:
   display_name: "Setup Skills"
-  short_description: "Point this repo's skills at a tracker, labels, and domain docs"
+  short_description: "Point the skills at a tracker and doc layout"
 policy:
   allow_implicit_invocation: false

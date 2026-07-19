@@ -75,6 +75,6 @@ If any of the three is missing, skip the ADR. Use the format in [references/adr-
 
 *Adapted from Matt Pocock's "domain-modeling" skill (github.com/mattpocock/skills) — MIT © Matt Pocock.
 Description tightened to one trigger per branch, sibling format files moved to `references/`, and the
-file-structure trees aligned with the layout [`setup-skills`](../setup-skills/SKILL.md) documents for
+file-structure trees aligned with the layout `setup-skills` documents for
 consuming skills — including the "don't scaffold, don't flag absence" rule that governs them there.
 See [NOTICE.md](../../NOTICE.md).*

@@ -1,6 +1,6 @@
 # Agent Skills
 
-Portable, agent-agnostic skills, version-controlled here as the **source of truth**. They are written for any LLM coding agent — [Claude Code](https://docs.claude.com/en/docs/claude-code), Codex, Cursor, or anything else that can load a Markdown procedure — not for one vendor. Each skill is a top-level directory with a `SKILL.md` (frontmatter + procedure) and optional `references/` files loaded on demand.
+Portable, agent-agnostic skills, version-controlled here as the **source of truth**. They are written for any LLM coding agent — [Claude Code](https://docs.claude.com/en/docs/claude-code), Codex, Cursor, or anything else that can load a Markdown procedure — not for one vendor. Each skill is a directory under `skills/` with a `SKILL.md` (frontmatter + procedure) and optional `references/` files loaded on demand.
 
 ## Layout
 
@@ -54,7 +54,7 @@ cost no context; **model-invoked** skills can also fire on their own.
 - **[to-tickets](skills/to-tickets/SKILL.md)** *(user)* — split a spec or plan into tracer-bullet tickets, each sized to one context window and declaring its blocking edges.
 - **[implement](skills/implement/SKILL.md)** *(user)* — build a ticket or spec, driving `tdd` internally and closing with `code-spec-review`.
 - **[tdd](skills/tdd/SKILL.md)** *(model)* — red → green at pre-agreed seams. Reference material on [good and bad tests](skills/tdd/references/good-and-bad-tests.md) and [mocking](skills/tdd/references/mocking.md).
-- **[code-review](skills/code-spec-review/SKILL.md)** *(model)* — review a diff along two axes kept deliberately separate: **Standards** (repo conventions plus a smell baseline from Fowler's *Refactoring*) and **Spec** (does it do what was actually asked?). Neither is allowed to mask the other.
+- **[code-spec-review](skills/code-spec-review/SKILL.md)** *(model)* — review a diff along two axes kept deliberately separate: **Standards** (repo conventions plus a smell baseline from Fowler's *Refactoring*) and **Spec** (does it do what was actually asked?). Neither is allowed to mask the other.
 
 ### On-ramps
 

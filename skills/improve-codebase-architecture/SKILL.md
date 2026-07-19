@@ -77,7 +77,7 @@ For each candidate, render a card with:
 End the report with a **Top recommendation** section: which candidate you'd tackle first and why.
 
 **Use CONTEXT.md vocabulary for the domain, and
-[codebase-design](../codebase-design/SKILL.md)'s vocabulary for the architecture.** If `CONTEXT.md`
+`codebase-design`'s vocabulary for the architecture.** If `CONTEXT.md`
 defines "Order," talk about "the Order intake module" — not "the FooBarHandler," and not "the Order
 service."
 
@@ -109,7 +109,7 @@ Side effects happen inline as decisions crystallize — run
   reason would actually be needed by a future explorer to avoid re-suggesting the same thing — skip
   ephemeral reasons ("not worth it right now") and self-evident ones.
 - **Want to explore alternative interfaces for the deepened module?** Read
-  [codebase-design](../codebase-design/SKILL.md) and use its design-it-twice parallel sub-agent
+  `codebase-design` and use its design-it-twice parallel sub-agent
   pattern.
 
 ---

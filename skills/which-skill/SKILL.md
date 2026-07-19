@@ -147,10 +147,10 @@ Off the main flow entirely.
 
 ## Configuration
 
-[`/setup-skills`](../setup-skills/SKILL.md) — **optional.** Point the tracker-aware skills at GitHub,
-GitLab, or local markdown, set the triage label vocabulary, and choose the domain doc layout. Nothing
-here waits on it: unconfigured, every skill that reads or writes issues defaults to local markdown
-under `.scratch/`. Run it when you want a different target, not before you start.
+`/setup-skills` — **optional.** Point the tracker-aware skills at GitHub, GitLab, or local markdown,
+set the triage label vocabulary, and choose the domain doc layout. Nothing here waits on it:
+unconfigured, every skill that reads or writes issues defaults to local markdown under `.scratch/`.
+Run it when you want a different target, not before you start.
 
 ---
 

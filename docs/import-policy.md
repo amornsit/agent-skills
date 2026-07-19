@@ -14,6 +14,12 @@ git clone --depth 1 https://github.com/mattpocock/skills.git .upstream && rm -rf
 
 ## The rule that governs the rest
 
+**This document co-evolved with the port it governs.** Parts of it were written after the situation
+they describe — §3's path table came from the collision it now prevents, §6's travelling-file rule
+from the script that needed it. That makes it a good spec going forward and a poor audit of what
+came before: agreement between these rules and the existing skills proves the rules were written
+down, not that they were followed. Judge past work against the diff, not against this file.
+
 **Adapt against the diff, never from memory.** Before editing a ported skill, run:
 
 ```sh
@@ -105,10 +111,14 @@ A skill is user-invoked in **both** harnesses or neither. Keep these in sync:
 
 ## 3. Output target (the tracker)
 
-Eight skills read or write an issue tracker: `to-spec`, `to-tickets`, `triage`, `wayfinder`,
-`code-spec-review`, `which-skill`, `implement` — which upstream does not flag, but which consumes tickets
-from the tracker and is `to-tickets`' handoff target — and `prototype`, which records its verdict on
-the implementation issue. All eight need the same guarantee.
+Seven skills read or write an issue tracker: `to-spec`, `to-tickets`, `triage`, `wayfinder`,
+`code-spec-review`, `implement` — which upstream does not flag, but which consumes tickets from the
+tracker and is `to-tickets`' handoff target — and `prototype`, which records its verdict on the
+implementation issue. All seven need the same guarantee.
+
+`which-skill` is **not** on this list, though an earlier draft placed it there: it is a hand-written
+router that writes nothing, and the read-only test below excludes it. Where a count and that test
+disagree, **the test wins** — a skill joins this list by writing, never by arithmetic.
 
 If a skill you are porting writes to an issue and is not on this list, it belongs on it: add the
 fallback and say so in your report rather than leaving the write unpinned.
@@ -116,7 +126,7 @@ fallback and say so in your report rather than leaving the write unpinned.
 - The mechanism is [`setup-skills`](../skills/setup-skills/SKILL.md), which writes a tracker doc the
   others consult. Upstream calls this `setup-matt-pocock-skills`; rename every reference.
 - **Setup is opt-in, never a prerequisite.** Upstream only guarantees the fallback in `wayfinder`;
-  give all eight the same guarantee, in these words or close to them:
+  give all seven the same guarantee, in these words or close to them:
 
   > If no tracker has been configured, default to the local-markdown tracker.
 
@@ -220,7 +230,10 @@ updating, in the same commit:
 
 ## Checklist per skill
 
-- [ ] `diff -u` against `.upstream/` reviewed; every hunk justified
+- [ ] `diff -u` against `.upstream/` reviewed; every hunk justified. **This leaves no artifact** —
+      `.upstream/` is gitignored, so a reader cannot verify it happened. The footer and the
+      `NOTICE.md` row record the *outcome*, not the reasoning. Treat the diff review as a working
+      method that improves the result, never as evidence you can point at later.
 - [ ] Lands at `skills/<name>/` with `agents/openai.yaml`
 - [ ] Sibling files moved to `references/`, context pointers updated
 - [ ] Invocation set in both harnesses, description rewritten to match the audience

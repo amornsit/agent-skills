@@ -42,11 +42,12 @@ logic; a page or component → UI) and state the assumption at the top of the pr
    abstractions. The point is to learn something fast.
 5. **Surface the state.** After every action (logic) or on every variant switch (UI), print or
    render the full relevant state so the user can see what changed.
-6. **Capture it when done.** Fold any validated decision into the real code, then capture the
-   prototype itself as a **primary source**: commit it to a throwaway branch, out of main, and leave
-   a context pointer to that branch on the implementation issue. Capture the answer too — the
-   verdict and the question it settled — in the issue or a commit. The main branch keeps only the
-   validated decision. If no tracker has been configured, default to the local-markdown tracker.
+6. **Capture it when done.** If no tracker has been configured, default to the local-markdown
+   tracker — the implementation issue is a file under `.scratch/<feature-slug>/issues/`. Fold any
+   validated decision into the real code, then capture the prototype itself as a **primary source**:
+   commit it to a throwaway branch, out of main, and leave a context pointer to that branch on the
+   implementation issue. Capture the answer too — the verdict and the question it settled — in the
+   issue or a commit. The main branch keeps only the validated decision.
 
 ---
 
