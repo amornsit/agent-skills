@@ -70,7 +70,12 @@ Iterate until the user approves. Do not write files before they do.
 
 Write one file per ticket — never a single combined file — under
 `.scratch/<feature-slug>/issues/<NN>-<slug>.md`, numbered from `01` in dependency order (blockers
-first). Create the directory if needed.
+first).
+
+Before writing, look under `.scratch/` for a directory that already belongs to this feature — a spec
+from [to-spec](../to-spec/SKILL.md), or tickets from an earlier run. Write into it if you find one;
+only create a new directory when nothing is there. A second directory naming the same feature
+differently strands both halves, and nothing downstream will look for the one you didn't write to.
 
 <ticket-template>
 

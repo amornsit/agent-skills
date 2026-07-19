@@ -17,6 +17,7 @@ against what we took (see [Checking for upstream changes](#checking-for-upstream
 | `tdd/references/good-and-bad-tests.md` | `skills/engineering/tdd/tests.md` | `9603c1c` | Reproduced verbatim; attribution footer appended |
 | `tdd/references/mocking.md` | `skills/engineering/tdd/mocking.md` | `9603c1c` | Reproduced, with minor Markdown formatting fixes; attribution footer appended |
 | `grilling/SKILL.md` | `skills/productivity/grilling/SKILL.md` | `9603c1c` | Adapted and extended |
+| `to-spec/SKILL.md` | `skills/engineering/to-spec/SKILL.md` | `9603c1c` | Adapted; stripped to local markdown output, seams split into their own step |
 | `to-tickets/SKILL.md` | `skills/engineering/to-tickets/SKILL.md` | `9603c1c` | Adapted; stripped to local markdown output |
 | `code-review/SKILL.md` | `skills/engineering/code-review/SKILL.md` | `9603c1c` | Adapted; both axes kept, smell baseline moved to `references/` |
 | `implement/SKILL.md` | `skills/engineering/implement/SKILL.md` | `9603c1c` | Adapted; cross-skill references repointed at this repo |
