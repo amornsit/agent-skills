@@ -1,11 +1,16 @@
 ---
 name: tdd
-description: Test-driven development. Use when the user wants to build a feature or fix a bug test-first, or wants integration tests written at the right seams.
+description: Test-driven development. Use when the user wants to build a feature test-first, fix a bug whose cause is already understood, or wants integration tests written at the right seams.
 ---
 
 # Test-Driven Development
 
 TDD is the red → green loop. This skill is the reference that makes that loop produce tests worth keeping: what a good test is, where tests go, the anti-patterns, and the rules of the loop. Every section applies on every cycle — consult them before and during the loop, not after.
+
+The loop starts from a behaviour you can already name. **If you're fixing a bug and don't yet know
+its cause, start at [`diagnosing-bugs`](../diagnosing-bugs/SKILL.md)** — it builds a loop that goes
+red on the actual bug and writes the regression test itself. Come here once the failing behaviour is
+understood.
 
 When exploring the codebase, read `CONTEXT.md` (if it exists) so test names and interface vocabulary match the project's domain language, and respect ADRs in the area you're touching.
 
@@ -44,4 +49,7 @@ _Adapted from Matt Pocock's "tdd" skill (github.com/mattpocock/skills) — MIT �
 `tests.md` and `mocking.md` moved to `references/` with the context pointers repointed and reworded
 to say when each file should be loaded; the description collapsed its "red-green-refactor" synonym
 into the test-first branch; links added to `codebase-design` (seam vocabulary) and `code-spec-review`,
-which upstream named as bare prose. See [NOTICE.md](../../NOTICE.md)._
+which upstream named as bare prose. Locally extended: upstream's description advertised "fix a bug
+test-first" while its body assumes the cause is already known, so the trigger is narrowed to that
+case and the unknown-cause case routed to `diagnosing-bugs`.
+See [NOTICE.md](../../NOTICE.md)._

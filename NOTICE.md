@@ -14,7 +14,7 @@ against what we took (see [Checking for upstream changes](#checking-for-upstream
 
 | File here | Derived from | Copied at | Relationship |
 |-----------|--------------|-----------|--------------|
-| `skills/tdd/SKILL.md` | `skills/engineering/tdd/SKILL.md` | `9603c1c` | Adapted; sibling `tests.md`/`mocking.md` moved to `references/` with context pointers repointed and reworded to say when each loads, description collapsed its "red-green-refactor" synonym, links added to `codebase-design` and `code-spec-review` |
+| `skills/tdd/SKILL.md` | `skills/engineering/tdd/SKILL.md` | `9603c1c` | Adapted; bug-fixing trigger narrowed to a known cause with the unknown-cause case routed to `diagnosing-bugs`; sibling `tests.md`/`mocking.md` moved to `references/` with context pointers repointed and reworded to say when each loads, description collapsed its "red-green-refactor" synonym, links added to `codebase-design` and `code-spec-review` |
 | `skills/tdd/references/good-and-bad-tests.md` | `skills/engineering/tdd/tests.md` | `9603c1c` | Verbatim; renamed to say what it holds and moved under `references/` |
 | `skills/tdd/references/mocking.md` | `skills/engineering/tdd/mocking.md` | `9603c1c` | Moved under `references/`; prose unchanged, bold pseudo-headings promoted to `###` for `MD036` |
 | `skills/grilling/SKILL.md` | `skills/productivity/grilling/SKILL.md` | `9603c1c` | Adapted; body H1 added, redundant `'grill'` trigger branch dropped from the description, plus a local stopping heuristic keyed to the stakes of the decision |
