@@ -14,5 +14,7 @@
     "MD041": { "front_matter_title": "" }  // ...still require the body to open with an H1.
   },
   "globs": ["**/*.md"],
-  "ignores": ["templates/**", "tmp/**", ".git/**"]
+  // .upstream/ is a vendored snapshot of mattpocock/skills, kept verbatim for diffing.
+  // It is not ours to lint — see docs/import-policy.md.
+  "ignores": ["templates/**", "tmp/**", ".git/**", ".upstream/**"]
 }

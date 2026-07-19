@@ -1,3 +1,0 @@
-interface:
-  display_name: "Working with Legacy Code"
-  short_description: "Get untested code safely under test before changing it"

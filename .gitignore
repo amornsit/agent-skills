@@ -16,3 +16,6 @@ tmp/
 *.bak
 .obsidian/
 .scratch/
+
+# Vendored upstream snapshot for diffing (see docs/import-policy.md)
+.upstream/
