@@ -86,9 +86,11 @@ cost no context; **model-invoked** skills can also fire on their own.
 
 ## Provenance
 
-Skills derived from [mattpocock/skills](https://github.com/mattpocock/skills) are ported under the
-rules in [`docs/import-policy.md`](docs/import-policy.md) — layout, invocation, tracker handling,
-naming, and attribution. Read it before adding or re-adapting one.
+Skills derived from [mattpocock/skills](https://github.com/mattpocock/skills) follow the conventions
+in [`docs/import-policy.md`](docs/import-policy.md) — layout, invocation, tracker handling, and
+attribution — which also records the decisions behind them and how to re-sync when upstream moves.
+**Read its roster-maintenance rule before adding, removing, or renaming a skill**: `which-skill`,
+this list, and `NOTICE.md` are hand-maintained and go stale silently.
 
 Every skill here now derives from [mattpocock/skills](https://github.com/mattpocock/skills). Book
 summaries and source notes live in the
