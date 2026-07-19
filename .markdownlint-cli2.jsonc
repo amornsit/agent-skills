@@ -15,6 +15,6 @@
   },
   "globs": ["**/*.md"],
   // .upstream/ is a vendored snapshot of mattpocock/skills, kept verbatim for diffing.
-  // It is not ours to lint — see docs/import-policy.md.
+  // It is not ours to lint — see CONTRIBUTING.md.
   "ignores": ["templates/**", "tmp/**", ".git/**", ".upstream/**"]
 }

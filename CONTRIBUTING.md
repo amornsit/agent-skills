@@ -5,7 +5,7 @@ Every skill here is ported from [mattpocock/skills](https://github.com/mattpococ
 decisions worth not re-litigating, and how to take a change from upstream.
 
 The full porting procedure that produced these 22 skills lived here and has been removed. Recover it
-from git history (`git log --follow docs/import-policy.md`) if you ever re-run a port at that scale.
+from git history (`git log --follow CONTRIBUTING.md`) if you ever re-run a port at that scale.
 
 ## Roster maintenance
 
@@ -32,7 +32,7 @@ twice: upstream's own router omits `resolving-merge-conflicts`, and the `code-re
 - **Output target** — a skill that writes to an issue must degrade gracefully: *"If no tracker has
   been configured, default to the local-markdown tracker,"* stated at the point of first tracker use.
   The local paths are specified in
-  [`issue-tracker-local.md`](../skills/setup-skills/references/issue-tracker-local.md), which is
+  [`issue-tracker-local.md`](skills/setup-skills/references/issue-tracker-local.md), which is
   their single source of truth — read it rather than reinventing them.
 - **Attribution** — an MIT footer naming what changed, and a `NOTICE.md` row. Depth is relative:
   `../../NOTICE.md` from `SKILL.md`, `../../../` from `references/`. A file designed to be *copied

@@ -9,14 +9,13 @@ skills/<skill-name>/
   SKILL.md          # name, description (the trigger), and the procedure
   agents/
     openai.yaml     # per-agent interface descriptor (display name, short description)
-  references/       # detailed material, loaded only when needed
+  references/       # detailed material, loaded on demand
+  scripts/          # executable assets the skill runs or tells you to copy
 ```
 
-`SKILL.md` is the portable core and carries no vendor-specific **instructions**. Anything an
-individual agent needs on top of that lives in `agents/`, so adding support for a new agent means
-adding a descriptor there rather than editing the procedure. The one exception is declarative
-frontmatter metadata: `disable-model-invocation` is read by Claude Code and inert everywhere else,
-and it is the only way to express "this skill is invoked by hand, never autonomously".
+`SKILL.md` is the portable core and carries no vendor-specific **instructions**; anything one agent
+needs on top of that lives in `agents/`. The rules behind this shape — and the invocation contract,
+tracker handling, and attribution — are in [`CONTRIBUTING.md`](CONTRIBUTING.md).
 
 ## How these are used
 
@@ -40,7 +39,7 @@ If an agent has no skills directory, the procedure still works read as-is: point
 ## Skills here
 
 All 22 derive from [mattpocock/skills](https://github.com/mattpocock/skills), ported under
-[`docs/import-policy.md`](docs/import-policy.md). Start with
+[`CONTRIBUTING.md`](CONTRIBUTING.md). Start with
 **[which-skill](skills/which-skill/SKILL.md)** if you don't know which one you want — it is the
 router over everything below and how the flows connect.
 
@@ -87,7 +86,7 @@ cost no context; **model-invoked** skills can also fire on their own.
 ## Provenance
 
 Skills derived from [mattpocock/skills](https://github.com/mattpocock/skills) follow the conventions
-in [`docs/import-policy.md`](docs/import-policy.md) — layout, invocation, tracker handling, and
+in [`CONTRIBUTING.md`](CONTRIBUTING.md) — layout, invocation, tracker handling, and
 attribution — which also records the decisions behind them and how to re-sync when upstream moves.
 **Read its roster-maintenance rule before adding, removing, or renaming a skill**: `which-skill`,
 this list, and `NOTICE.md` are hand-maintained and go stale silently.
@@ -125,7 +124,7 @@ What is ours is the plumbing around them: a local-markdown default for every ski
 writes issues, cross-skill links repointed into this repo, a two-harness invocation contract, and a
 handful of additions named individually in each file's footer. Those are catalogued per file in
 [NOTICE.md](NOTICE.md), which also reproduces his licence in full, and the rules behind them are in
-[`docs/import-policy.md`](docs/import-policy.md).
+[`CONTRIBUTING.md`](CONTRIBUTING.md).
 
 If you find these useful, the credit belongs upstream — go star
 [mattpocock/skills](https://github.com/mattpocock/skills).
