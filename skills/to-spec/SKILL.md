@@ -1,119 +1,93 @@
 ---
 name: to-spec
-description: Turn the current conversation into a spec — problem, solution, user stories, and the implementation and testing decisions already settled — written to `.scratch/` as a single markdown file. Use when a discussion has converged and needs writing down before it is sliced into tickets or built. Invoke explicitly; do not auto-trigger on every design discussion.
+description: Synthesize the current conversation into a spec and publish it to the project issue tracker — no interview, just what has already been decided.
+disable-model-invocation: true
 ---
 
 # To Spec
 
-Turn the current conversation into a **spec** — the document some teams call a PRD.
+This skill takes the current conversation context and codebase understanding and produces a spec (you may know this document as a PRD). Do NOT interview the user — just synthesize what you already know.
 
-**Do not interview the user.** This skill synthesizes a decision that has already been made. The
-discussion happened; your job is to write it down, not to reopen it. If you find yourself wanting to
-ask what the feature should do, you have invoked this too early — say so and stop.
+The issue tracker and triage label vocabulary should have been provided to you. If no tracker has been configured, default to the local-markdown tracker; run `/setup-skills` to point the skill somewhere else.
 
-## 1. Gather context
+## Process
 
-Work from what is already in the conversation. If the user passes a reference — a plan, a file, a
-URL — read it in full first.
+1. Explore the repo to understand the current state of the codebase, if you haven't already. Use the project's domain glossary vocabulary throughout the spec, and respect any ADRs in the area you're touching.
 
-If you have not already explored the codebase, do so now. The spec should use the vocabulary the
-project actually uses, and should respect any architectural decisions already recorded in the area
-you're touching — an ADR, a `CONVENTIONS.md`, a `CLAUDE.md`, or the prevailing pattern in
-neighbouring code.
+2. Sketch out the seams at which you're going to test the feature. Existing seams should be preferred to new ones. Use the highest seam possible. If new seams are needed, propose them at the highest point you can. The fewer seams across the codebase, the better - the ideal number is one.
 
-## 2. Sketch the seams
+   Check with the user that these seams match their expectations.
 
-A **seam** is a place you can change behaviour without editing in that place — the point at which
-this feature can be tested. Decide those before writing the spec, because they shape what the
-Testing Decisions section can honestly promise.
+3. Write the spec using the template below, then publish it to the project issue tracker. If no tracker has been configured, default to the local-markdown tracker: write the spec to `.scratch/<feature-slug>/spec.md`, creating the directory if it does not exist.
 
-<seam-rules>
-
-- Prefer an existing seam to a new one
-- Use the highest seam available — the one closest to the user-visible behaviour
-- The fewer seams this feature adds across the codebase, the better; the ideal is none
-- If a new seam is genuinely needed, propose it at the highest point you can
-
-</seam-rules>
-
-If the code you'd be testing through is untested or tangled enough that no seam is reachable,
-that's a finding for the spec, not a detail to paper over — see
-[working-with-legacy-code](../working-with-legacy-code/SKILL.md) for how the seam gets created, and
-record the work as its own scope item.
-
-Present the seams to the user and confirm they match expectations before writing. This is the only
-checkpoint in the skill — everything else is synthesis of what they already told you.
-
-## 3. Write the spec
-
-Write to `.scratch/<feature-slug>/spec.md`, creating the directory if needed. By convention
-[to-tickets](../to-tickets/SKILL.md) writes its `issues/` directory into that same folder, so a
-feature's spec and its tickets end up together — tell the user the path you used, and pass it when
-you invoke `to-tickets` rather than leaving it to guess the same slug.
+   Apply the `ready-for-agent` triage label - no need for additional triage. On the local-markdown tracker that label is a `Status: ready-for-agent` line near the top of the file.
 
 <spec-template>
 
-```markdown
-# Feature title
-
 ## Problem Statement
 
-The problem the user is facing, from the user's perspective.
+The problem that the user is facing, from the user's perspective.
 
 ## Solution
 
-The solution to that problem, from the user's perspective.
+The solution to the problem, from the user's perspective.
 
 ## User Stories
 
-A long, numbered list, each in the form:
+A LONG, numbered list of user stories. Each user story should be in the format of:
 
-1. As an <actor>, I want <capability>, so that <benefit>
+1. As an <actor>, I want a <feature>, so that <benefit>
 
-Cover the whole feature — the ordinary path, the empty and error states, and what each actor can
-see or do. A story the list omits is a decision nobody made.
+<user-story-example>
+1. As a mobile bank customer, I want to see balance on my accounts, so that I can make better informed decisions about my spending
+</user-story-example>
+
+This list of user stories should be extremely extensive and cover all aspects of the feature.
 
 ## Implementation Decisions
 
-What was settled about how this gets built: the modules built or modified and their interfaces,
-schema changes, API contracts, architectural choices, and any technical clarification the user
-gave during the discussion.
+A list of implementation decisions that were made. This can include:
+
+- The modules that will be built/modified
+- The interfaces of those modules that will be modified
+- Technical clarifications from the developer
+- Architectural decisions
+- Schema changes
+- API contracts
+- Specific interactions
+
+Do NOT include specific file paths or code snippets. They may end up being outdated very quickly.
+
+Exception: if a prototype produced a snippet that encodes a decision more precisely than prose can (state machine, reducer, schema, type shape), inline it within the relevant decision and note briefly that it came from a prototype. Trim to the decision-rich parts — not a working demo, just the important bits.
 
 ## Testing Decisions
 
-The seams agreed in step 2, what will be tested through each, and the prior art in this codebase
-that those tests should resemble. Tests here assert external behaviour, never implementation
-detail.
+A list of testing decisions that were made. Include:
+
+- A description of what makes a good test (only test external behavior, not implementation details)
+- Which modules will be tested
+- Prior art for the tests (i.e. similar types of tests in the codebase)
 
 ## Out of Scope
 
-What this spec deliberately does not cover — and, where it's a close call, why.
+A description of the things that are out of scope for this spec.
 
 ## Further Notes
 
-Anything else worth carrying forward: open questions, assumptions, things to revisit.
-```
+Any further notes about the feature.
 
 </spec-template>
 
-Avoid specific file paths and code snippets — they go stale fast. The exception is a snippet that
-encodes a decision more precisely than prose can (a state machine, a reducer, a schema, a type
-shape). Inline it, trimmed to the decision-rich parts.
+## Next
 
-Write only what was decided. A spec that invents requirements to fill a section is worse than a
-spec with a short section — if the discussion never settled something, it belongs under Further
-Notes as an open question, not under Implementation Decisions as a fact.
-
-## 4. Hand off
-
-The spec is the input to [to-tickets](../to-tickets/SKILL.md) when the work is too big for one
-context window, or straight to [implement](../implement/SKILL.md) when it isn't.
+Break the published spec into tickets with [`to-tickets`](../to-tickets/SKILL.md), then work the
+frontier one ticket at a time with [`implement`](../implement/SKILL.md), clearing context between
+tickets.
 
 ---
 
 *Adapted from Matt Pocock's "to-spec" skill (github.com/mattpocock/skills) — MIT © Matt Pocock.
-Stripped to local markdown output: the original's issue tracker, `ready-for-agent` triage label, and
-`/setup-matt-pocock-skills` coupling are removed in favour of a `.scratch/` file shared with
-`to-tickets`. Seam guidance is pulled into its own step and pointed at this repo's legacy-code
-skill, and the Claude-specific no-auto-invoke frontmatter moves to `agents/`. See
-[NOTICE.md](../NOTICE.md).*
+Tracker references renamed to `/setup-skills`, the "run setup if not" gate removed in favour of
+degrading to the local-markdown default (`.scratch/<feature-slug>/spec.md`) at the point the spec is
+published, plus a local "Next" section handing off to `to-tickets` and `implement`. See
+[NOTICE.md](../../NOTICE.md).*

@@ -5,16 +5,18 @@ Portable, agent-agnostic skills, version-controlled here as the **source of trut
 ## Layout
 
 ```text
-<skill-name>/
+skills/<skill-name>/
   SKILL.md          # name, description (the trigger), and the procedure
   agents/
     openai.yaml     # per-agent interface descriptor (display name, short description)
   references/       # detailed material, loaded only when needed
 ```
 
-`SKILL.md` is the portable core and carries no vendor-specific instructions. Anything an individual
-agent needs on top of that lives in `agents/`, so adding support for a new agent means adding a
-descriptor there rather than editing the procedure.
+`SKILL.md` is the portable core and carries no vendor-specific **instructions**. Anything an
+individual agent needs on top of that lives in `agents/`, so adding support for a new agent means
+adding a descriptor there rather than editing the procedure. The one exception is declarative
+frontmatter metadata: `disable-model-invocation` is read by Claude Code and inert everywhere else,
+and it is the only way to express "this skill is invoked by hand, never autonomously".
 
 ## How these are used
 
@@ -22,8 +24,14 @@ Each agent looks for skills in its own directory, so activate a skill by symlink
 this repo stays the single place you edit, and the change applies everywhere the symlinks point:
 
 ```sh
-ln -s "$PWD/tdd" ~/.claude/skills/tdd     # Claude Code (or a project's .claude/skills/)
-ln -s "$PWD/tdd" ~/.codex/skills/tdd      # another agent — adjust the path to its convention
+ln -s "$PWD/skills/tdd" ~/.claude/skills/tdd     # Claude Code (or a project's .claude/skills/)
+ln -s "$PWD/skills/tdd" ~/.codex/skills/tdd      # another agent — adjust the path to its convention
+```
+
+Or link the whole set at once:
+
+```sh
+for d in "$PWD"/skills/*/; do ln -sfn "$d" ~/.claude/skills/"$(basename "$d")"; done
 ```
 
 If an agent has no skills directory, the procedure still works read as-is: point the agent at the
@@ -31,29 +39,31 @@ If an agent has no skills directory, the procedure still works read as-is: point
 
 ## Skills here
 
-- **[tdd](tdd/SKILL.md)** — test-driven development discipline for an LLM coding agent, adapted from Kent Beck's *Test-Driven Development: By Example*. Enforces red→green→refactor, one failing test at a time, the three gears to green (Fake It / Triangulate / Obvious Implementation), and characterization tests before refactoring untested code. Companion to the [book summary](https://github.com/amornsit/knowledge-accumulation/blob/main/summaries/test-driven-development-by-example-summary.md).
-- **[working-with-legacy-code](working-with-legacy-code/SKILL.md)** — getting untested, hard-to-test code safely under test, adapted from Michael Feathers' *Working Effectively with Legacy Code*. The Legacy Code Change Algorithm, characterization tests, seams, and dependency-breaking techniques.
-- **[grilling](grilling/SKILL.md)** — grill the user relentlessly about a plan, decision, or idea to stress-test their thinking, one question at a time. Adapted from Matt Pocock's *grilling* skill, extended with a facts-first opening move, a stopping heuristic keyed to the stakes, and a nudge toward structured question tools.
-- **[to-spec](to-spec/SKILL.md)** — synthesize a converged conversation into a spec — problem, solution, user stories, and the implementation and testing decisions already settled — written to `.scratch/<feature-slug>/spec.md`. No interview: it writes down a decision that was already made, and confirms only the test seams. Adapted from Matt Pocock's *to-spec* skill, stripped to local markdown output.
-- **[to-tickets](to-tickets/SKILL.md)** — break a plan or conversation into tracer-bullet vertical slices, each sized to one context window and declaring the tickets that block it, written to `.scratch/` as one markdown file per ticket. Includes the expand–contract sequence for wide refactors that can't be vertically sliced. Adapted from Matt Pocock's *to-tickets* skill, stripped to local markdown output.
-- **[code-review](code-review/SKILL.md)** — review a diff along two axes kept deliberately separate: **Standards** (repo conventions plus a [smell baseline](code-review/references/code-smells.md) from Fowler's *Refactoring*) and **Spec** (does it do what was actually asked?). Neither axis is allowed to mask the other. Adapted from Matt Pocock's *code-review* skill.
-- **[implement](implement/SKILL.md)** — build the work from a spec or a set of `to-tickets` tickets: work the frontier one ticket at a time, drive real behaviour test-first with `tdd`, then check the result with `code-review`. The glue that connects the three. Adapted from Matt Pocock's *implement* skill.
-- **[resolving-merge-conflicts](resolving-merge-conflicts/SKILL.md)** — resolve an in-progress git merge or rebase: understand each side's intent from its commits and PRs, preserve both where possible, run the project's checks, then finish. Adapted from Matt Pocock's *resolving-merge-conflicts* skill.
+> **Port in progress.** The full set of 23 skills is being re-adapted together against
+> [`docs/import-policy.md`](docs/import-policy.md). Skills marked *verbatim* below are currently
+> unmodified upstream copies awaiting adaptation — the descriptions here describe the intended
+> result, not what is on disk today. See `NOTICE.md` for per-file status.
 
-### How tdd and working-with-legacy-code relate
-
-They **chain, they don't compete** — a deliberate split so it's clear which to use:
-
-- **`tdd`** owns writing/changing code *test-first* — greenfield, or code already under test.
-- **`working-with-legacy-code`** owns the step before that: making untested, dependency-tangled code *testable*. Once the code is pinned under a characterization test, it **hands off to `tdd`** for the actual change.
-
-Rough rule: *can't test it yet* → legacy skill; *can test it (or it's new)* → `tdd`.
+- **[tdd](skills/tdd/SKILL.md)** — test-driven development: build features and fix bugs test-first, red-green-refactor. Reference material on [good and bad tests](skills/tdd/references/good-and-bad-tests.md) and [mocking](skills/tdd/references/mocking.md). Adapted from Matt Pocock's *tdd* skill.
+- **[grilling](skills/grilling/SKILL.md)** — grill the user relentlessly about a plan, decision, or idea to stress-test their thinking, one question at a time. Adapted from Matt Pocock's *grilling* skill, extended with a facts-first opening move, a stopping heuristic keyed to the stakes, and a nudge toward structured question tools.
+- **[to-spec](skills/to-spec/SKILL.md)** — synthesize a converged conversation into a spec — problem, solution, user stories, and the implementation and testing decisions already settled — written to `.scratch/<feature-slug>/spec.md`. No interview: it writes down a decision that was already made, and confirms only the test seams. Adapted from Matt Pocock's *to-spec* skill, stripped to local markdown output.
+- **[to-tickets](skills/to-tickets/SKILL.md)** — break a plan or conversation into tracer-bullet vertical slices, each sized to one context window and declaring the tickets that block it, written to `.scratch/` as one markdown file per ticket. Includes the expand–contract sequence for wide refactors that can't be vertically sliced. Adapted from Matt Pocock's *to-tickets* skill, stripped to local markdown output.
+- **[code-review](skills/code-review/SKILL.md)** — review a diff along two axes kept deliberately separate: **Standards** (repo conventions plus a smell baseline from Fowler's *Refactoring*) and **Spec** (does it do what was actually asked?). Neither axis is allowed to mask the other. Adapted from Matt Pocock's *code-review* skill.
+- **[implement](skills/implement/SKILL.md)** — build the work from a spec or a set of `to-tickets` tickets: work the frontier one ticket at a time, drive real behaviour test-first with `tdd`, then check the result with `code-review`. The glue that connects the three. Adapted from Matt Pocock's *implement* skill.
+- **[resolving-merge-conflicts](skills/resolving-merge-conflicts/SKILL.md)** — resolve an in-progress git merge or rebase: understand each side's intent from its commits and PRs, preserve both where possible, run the project's checks, then finish. Adapted from Matt Pocock's *resolving-merge-conflicts* skill.
+- **[setup-skills](skills/setup-skills/SKILL.md)** — opt-in configuration for the skills that read or write an issue tracker: point them at GitHub, GitLab, or local markdown, set the triage label vocabulary, and choose the domain doc layout. Never a prerequisite — unconfigured, everything defaults to local markdown under `.scratch/`. Adapted from Matt Pocock's *setup-matt-pocock-skills* skill.
+- **[codebase-design](skills/codebase-design/SKILL.md)** — shared vocabulary for designing **deep modules**: a lot of behaviour behind a small interface, placed at a clean seam. Use when deciding where a seam goes, hunting deepening opportunities, or when another skill needs the deep-module language. Adapted from Matt Pocock's *codebase-design* skill.
 
 ## Provenance
 
-The `tdd` and `working-with-legacy-code` skills were distilled from book summaries in the
-[knowledge-accumulation](https://github.com/amornsit/knowledge-accumulation) repo, which
-remains the home for the source notes and summaries. This repo is just the runnable skills.
+Skills derived from [mattpocock/skills](https://github.com/mattpocock/skills) are ported under the
+rules in [`docs/import-policy.md`](docs/import-policy.md) — layout, invocation, tracker handling,
+naming, and attribution. Read it before adding or re-adapting one.
+
+Every skill here now derives from [mattpocock/skills](https://github.com/mattpocock/skills). Book
+summaries and source notes live in the
+[knowledge-accumulation](https://github.com/amornsit/knowledge-accumulation) repo, which remains the
+home for that material.
 
 ## Linting
 

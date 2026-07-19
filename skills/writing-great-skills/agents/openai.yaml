@@ -1,0 +1,5 @@
+interface:
+  display_name: "Writing Great Skills"
+  short_description: "House style for writing and editing skills"
+policy:
+  allow_implicit_invocation: false

@@ -1,31 +1,32 @@
 ---
 name: implement
-description: Build the work described by a spec or a set of tickets — test-first where it counts, then reviewed. Use when the user says to implement, build, or work a ticket, spec, or an approved plan. Invoke explicitly; do not auto-trigger on every code request.
+description: "Build a piece of work from a spec or a set of tickets, test-first, and commit it."
+disable-model-invocation: true
 ---
 
 # Implement
 
-Implement the work the user described — a spec, or a set of tickets from [to-tickets](../to-tickets/SKILL.md).
+Implement the work described by the user in the spec or tickets.
 
-If the work is a set of tickets, build the **frontier** one ticket at a time — any ticket whose
-blockers are all done — and clear context between tickets. Each ticket was sized to fit one fresh
-context, so carrying the last one's context into the next only crowds it.
+The spec normally comes from [`to-spec`](../to-spec/SKILL.md) and the tickets from
+[`to-tickets`](../to-tickets/SKILL.md). If the user passes a reference rather than the work itself
+— a ticket number, a path, an issue URL — fetch it from the configured tracker and read it in full
+before starting. If no tracker has been configured, default to the local-markdown tracker: tickets
+live one per file at `.scratch/<feature-slug>/issues/NN-<slug>.md`. `/setup-skills` changes which
+tracker is the target; it is not a prerequisite for this skill.
 
-Drive the code test-first with [tdd](../tdd/SKILL.md) at the seams that carry real behaviour — a
-parser, a reducer, a calculation, a state machine. Agree those seams before writing them, and don't
-force it onto glue, wiring, or config that has no behaviour to pin.
+Use [`tdd`](../tdd/SKILL.md) where possible, at pre-agreed seams.
 
-Keep the feedback loop tight as you go: typecheck often, run the single test file you're working in
-often, and run the full suite once at the end rather than after every change.
+Run typechecking regularly, single test files regularly, and the full test suite once at the end.
 
-When the work is done, review it with [code-review](../code-review/SKILL.md) against the spec or
-ticket that motivated it, and address what that surfaces.
+Once done, use [`code-review`](../code-review/SKILL.md) to review the work.
 
-Commit to the current branch.
+Commit your work to the current branch.
 
 ---
 
 *Adapted from Matt Pocock's "implement" skill (github.com/mattpocock/skills) — MIT © Matt Pocock.
-The `/tdd` and `/code-review` references are repointed at the skills in this repo, ticket-frontier
-handling is spelled out, and the Claude-specific no-auto-invoke frontmatter moves to `agents/`. See
-[NOTICE.md](../NOTICE.md).*
+Reproduced with the slash-command mentions of `tdd` and `code-review` turned into cross-skill links
+into this repo; local extension: a ticket-fetch paragraph naming `to-spec` and `to-tickets` as the
+upstream sources and guaranteeing the local-markdown tracker fallback, which upstream leaves
+implicit. See [NOTICE.md](../../NOTICE.md).*

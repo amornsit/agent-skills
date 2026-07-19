@@ -78,5 +78,6 @@ test("calculateTotal sums line items", () => {
 
 ---
 
-*Source: Matt Pocock's `tdd` skill, `tests.md` (github.com/mattpocock/skills) — MIT © Matt Pocock.
-Reproduced here as reference material for the `tdd` skill; see [NOTICE.md](../../NOTICE.md).*
+*Adapted from Matt Pocock's "tdd" skill (github.com/mattpocock/skills) — MIT © Matt Pocock.
+Upstream's `tests.md`, verbatim; renamed to say what it holds and moved under `references/`.
+See [NOTICE.md](../../../NOTICE.md).*

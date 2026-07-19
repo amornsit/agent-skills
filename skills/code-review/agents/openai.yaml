@@ -1,3 +1,3 @@
 interface:
   display_name: "Code Review"
-  short_description: "Two-axis diff review — standards and spec, kept separate"
+  short_description: "Review a diff on standards and spec"

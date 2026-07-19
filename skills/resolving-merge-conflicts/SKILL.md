@@ -1,6 +1,6 @@
 ---
 name: resolving-merge-conflicts
-description: Resolve an in-progress git merge or rebase conflict — understand each side's intent, preserve both where possible, then run the project's checks and finish. Use when a merge or rebase has stopped with conflicts to resolve.
+description: "Merge conflict resolution. Use when a merge or a rebase is in progress and has stopped on conflicts."
 ---
 
 # Resolving Merge Conflicts
@@ -23,6 +23,6 @@ description: Resolve an in-progress git merge or rebase conflict — understand 
 
 ---
 
-*Adapted from Matt Pocock's "resolving-merge-conflicts" skill (github.com/mattpocock/skills) —
-MIT © Matt Pocock. Reproduced with a body heading and a richer trigger description; the procedure is
-unchanged. See [NOTICE.md](../NOTICE.md).*
+*Adapted from Matt Pocock's "resolving-merge-conflicts" skill (github.com/mattpocock/skills) — MIT ©
+Matt Pocock. Procedure reproduced unchanged; an `# H1` was added for this repo's `MD041` rule and the
+description rewritten to front-load its leading word. See [NOTICE.md](../../NOTICE.md).*

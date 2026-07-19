@@ -61,5 +61,7 @@ The SDK approach means:
 
 ---
 
-*Source: Matt Pocock's `tdd` skill, `mocking.md` (github.com/mattpocock/skills) — MIT © Matt Pocock.
-Reproduced here as reference material for the `tdd` skill; see [NOTICE.md](../../NOTICE.md).*
+*Adapted from Matt Pocock's "tdd" skill (github.com/mattpocock/skills) — MIT © Matt Pocock.
+Moved from a sibling of `SKILL.md` into `references/`; prose unchanged, with the two bold
+pseudo-headings promoted to real `###` headings to satisfy `MD036`.
+See [NOTICE.md](../../../NOTICE.md).*

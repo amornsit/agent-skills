@@ -1,27 +1,27 @@
 ---
 name: grilling
-description: Grill the user relentlessly about a plan, decision, or idea. Use when the user wants to stress-test their thinking, or uses any 'grill' trigger phrases.
+description: Grill the user relentlessly about a plan, decision, or idea. Use when the user wants to stress-test their thinking before committing to it.
 ---
 
 # Grilling
 
-Interview me relentlessly about a plan, decision, or idea until we reach a shared understanding solid enough to act on.
+Interview me relentlessly about every aspect of this until we reach a shared understanding. Walk
+down each branch of the decision tree, resolving dependencies between decisions one-by-one. For each
+question, provide your recommended answer.
 
-**First, gather the facts yourself.** Before asking anything, explore the environment — filesystem, tools, docs, code — and resolve every question that has a discoverable answer. Only *decisions* are mine; put those to me and never guess at them. If you catch yourself about to ask something you could look up, look it up instead.
+Ask the questions one at a time, waiting for feedback on each question before continuing. Asking
+multiple questions at once is bewildering.
 
-**Then walk the decision tree, one branch at a time.** Resolve dependencies between decisions in order — an upstream choice often collapses or reshapes the questions below it, so don't ask ahead of what's settled.
+If a *fact* can be found by exploring the environment (filesystem, tools, etc.), look it up rather
+than asking me. The *decisions*, though, are mine — put each one to me and wait for my answer.
 
-**Ask one question at a time and wait for my answer.** A wall of questions is bewildering. For each one:
+Stop asking when the remaining questions would no longer change the outcome — match the depth of
+the grilling to the stakes of the decision.
 
-- State your *recommended* answer and the reasoning in a sentence or two, so I can react rather than invent from scratch.
-- Where the harness offers a structured way to ask (e.g. a multiple-choice question tool), use it, with your recommendation as the first option.
-
-**Know when to stop.** Grill hard, but stop asking when the remaining questions would no longer change what you'd build — match the depth of interrogation to the stakes of the decision. A reversible one-liner deserves a question or two; an architectural commitment deserves the full tree. When you believe we're there, say so and summarize the shared understanding.
-
-**Do not act on any of it until I confirm.**
+Do not act on it until I confirm we have reached a shared understanding.
 
 ---
 
 *Adapted from Matt Pocock's "grilling" skill (github.com/mattpocock/skills) — MIT © Matt Pocock.
-Extends the original with a facts-first opening move, a stopping heuristic keyed to the stakes of
-the decision, and a nudge toward structured question tools. See [NOTICE.md](../NOTICE.md).*
+Adds a stopping heuristic keyed to the stakes of the decision, and drops the redundant "'grill'
+trigger phrases" branch from the description. See [NOTICE.md](../../NOTICE.md).*
