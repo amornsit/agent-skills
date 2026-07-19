@@ -37,9 +37,9 @@ The route most work travels. You have an idea and want it built.
 
    Either way, `/implement` builds each ticket by driving [`/tdd`](../tdd/SKILL.md) internally — one
    red-green slice at a time — then closes out by running
-   [`/code-review`](../code-review/SKILL.md), a two-axis review (Standards + Spec) of the diff,
+   [`/code-spec-review`](../code-spec-review/SKILL.md), a two-axis review (Standards + Spec) of the diff,
    before committing. Reach for `/tdd` on its own when you just want to build a concrete behaviour
-   test-first without a full spec, and `/code-review` on its own whenever you want to review a branch
+   test-first without a full spec, and `/code-spec-review` on its own whenever you want to review a branch
    or PR against a fixed point.
 
 ### Context hygiene

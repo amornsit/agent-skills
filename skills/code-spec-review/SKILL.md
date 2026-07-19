@@ -1,5 +1,5 @@
 ---
-name: code-review
+name: code-spec-review
 description: Review the changes since a fixed point (commit, branch, tag, or merge-base) along two axes — Standards (does the code follow this repo's documented coding standards?) and Spec (does the code match what the originating issue/PRD asked for?). Runs both reviews in parallel sub-agents and reports them side by side. Use when the user wants the changes since a fixed point reviewed, or when another skill hands finished work off for review.
 ---
 
@@ -93,5 +93,6 @@ Reporting them separately stops one axis from masking the other.
 ---
 
 _Adapted from Matt Pocock's "code-review" skill (github.com/mattpocock/skills) — MIT © Matt Pocock.
-The `/setup-matt-pocock-skills` gate was removed and replaced, at the point of first tracker use, with a local-markdown fallback naming `.scratch/<feature-slug>/spec.md` and a `/setup-skills` mention for changing the target; a pointer to `codebase-design` was added after the smell baseline, the description's four synonyms for one trigger were collapsed, and a body H1 was added.
+Renamed to `code-spec-review`: the name `code-review` is taken by a Claude Code built-in, which
+shadowed this skill so it never registered. The `/setup-matt-pocock-skills` gate was removed and replaced, at the point of first tracker use, with a local-markdown fallback naming `.scratch/<feature-slug>/spec.md` and a `/setup-skills` mention for changing the target; a pointer to `codebase-design` was added after the smell baseline, the description's four synonyms for one trigger were collapsed, and a body H1 was added.
 See [NOTICE.md](../../NOTICE.md)._

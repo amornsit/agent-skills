@@ -36,12 +36,12 @@ Ask: "What's the public interface, and which seams should we test?"
 
 - **Red before green.** Write the failing test first, then only enough code to pass it. Don't anticipate future tests or add speculative features.
 - **One slice at a time.** One seam, one test, one minimal implementation per cycle.
-- **Refactoring is not part of the loop.** It belongs to the review stage (see [`code-review`](../code-review/SKILL.md)), not the red → green implementation cycle.
+- **Refactoring is not part of the loop.** It belongs to the review stage (see [`code-spec-review`](../code-spec-review/SKILL.md)), not the red → green implementation cycle.
 
 ---
 
 _Adapted from Matt Pocock's "tdd" skill (github.com/mattpocock/skills) — MIT © Matt Pocock.
 `tests.md` and `mocking.md` moved to `references/` with the context pointers repointed and reworded
 to say when each file should be loaded; the description collapsed its "red-green-refactor" synonym
-into the test-first branch; links added to `codebase-design` (seam vocabulary) and `code-review`,
+into the test-first branch; links added to `codebase-design` (seam vocabulary) and `code-spec-review`,
 which upstream named as bare prose. See [NOTICE.md](../../NOTICE.md)._

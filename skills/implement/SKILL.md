@@ -19,14 +19,14 @@ Use [`tdd`](../tdd/SKILL.md) where possible, at pre-agreed seams.
 
 Run typechecking regularly, single test files regularly, and the full test suite once at the end.
 
-Once done, use [`code-review`](../code-review/SKILL.md) to review the work.
+Once done, use [`code-spec-review`](../code-spec-review/SKILL.md) to review the work.
 
 Commit your work to the current branch.
 
 ---
 
 *Adapted from Matt Pocock's "implement" skill (github.com/mattpocock/skills) — MIT © Matt Pocock.
-Reproduced with the slash-command mentions of `tdd` and `code-review` turned into cross-skill links
+Reproduced with the slash-command mentions of `tdd` and `code-spec-review` turned into cross-skill links
 into this repo; local extension: a ticket-fetch paragraph naming `to-spec` and `to-tickets` as the
 upstream sources and guaranteeing the local-markdown tracker fallback, which upstream leaves
 implicit. See [NOTICE.md](../../NOTICE.md).*

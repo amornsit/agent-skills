@@ -43,7 +43,7 @@ Lead each section with the recommended answer so the user can accept it in a wor
 
 **Section A — Issue tracker.**
 
-> Explainer: The "issue tracker" is where issues live for this repo. Skills like [to-tickets](../to-tickets/SKILL.md), [triage](../triage/SKILL.md), [to-spec](../to-spec/SKILL.md), [wayfinder](../wayfinder/SKILL.md), and [code-review](../code-review/SKILL.md) read from and write to it — they need to know whether to call `gh issue create`, write a markdown file under `.scratch/`, or follow some other workflow you describe. Pick the place you actually track work for this repo.
+> Explainer: The "issue tracker" is where issues live for this repo. Skills like [to-tickets](../to-tickets/SKILL.md), [triage](../triage/SKILL.md), [to-spec](../to-spec/SKILL.md), [wayfinder](../wayfinder/SKILL.md), and [code-review](../code-spec-review/SKILL.md) read from and write to it — they need to know whether to call `gh issue create`, write a markdown file under `.scratch/`, or follow some other workflow you describe. Pick the place you actually track work for this repo.
 
 Default posture: local markdown, which is what the skills assume when unconfigured — propose it unless the repo says otherwise. If a `git remote` points at GitHub, propose GitHub instead; if a remote points at GitLab (`gitlab.com` or a self-hosted host), propose GitLab. The full set:
 

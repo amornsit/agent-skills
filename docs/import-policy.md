@@ -39,7 +39,7 @@ All 22 upstream `engineering/` and `productivity/` skills are in scope. **This l
 authority** — never take a roster from a task prompt, which may be incomplete.
 
 ```text
-code-review      codebase-design   diagnosing-bugs   domain-modeling
+code-spec-review codebase-design   diagnosing-bugs   domain-modeling
 grill-me         grill-with-docs   grilling          handoff
 implement        improve-codebase-architecture       prototype
 research         resolving-merge-conflicts           setup-skills   (←setup-matt-pocock-skills)
@@ -106,7 +106,7 @@ A skill is user-invoked in **both** harnesses or neither. Keep these in sync:
 ## 3. Output target (the tracker)
 
 Eight skills read or write an issue tracker: `to-spec`, `to-tickets`, `triage`, `wayfinder`,
-`code-review`, `which-skill`, `implement` — which upstream does not flag, but which consumes tickets
+`code-spec-review`, `which-skill`, `implement` — which upstream does not flag, but which consumes tickets
 from the tracker and is `to-tickets`' handoff target — and `prototype`, which records its verdict on
 the implementation issue. All eight need the same guarantee.
 

@@ -52,9 +52,9 @@ cost no context; **model-invoked** skills can also fire on their own.
 - **[grill-with-docs](skills/grill-with-docs/SKILL.md)** *(user)* — sharpen an idea by interview, leaving a paper trail in `CONTEXT.md` and ADRs. The on-ramp when you have a codebase.
 - **[to-spec](skills/to-spec/SKILL.md)** *(user)* — synthesize a converged conversation into a spec. No interview: it writes down a decision already made.
 - **[to-tickets](skills/to-tickets/SKILL.md)** *(user)* — split a spec or plan into tracer-bullet tickets, each sized to one context window and declaring its blocking edges.
-- **[implement](skills/implement/SKILL.md)** *(user)* — build a ticket or spec, driving `tdd` internally and closing with `code-review`.
+- **[implement](skills/implement/SKILL.md)** *(user)* — build a ticket or spec, driving `tdd` internally and closing with `code-spec-review`.
 - **[tdd](skills/tdd/SKILL.md)** *(model)* — red → green at pre-agreed seams. Reference material on [good and bad tests](skills/tdd/references/good-and-bad-tests.md) and [mocking](skills/tdd/references/mocking.md).
-- **[code-review](skills/code-review/SKILL.md)** *(model)* — review a diff along two axes kept deliberately separate: **Standards** (repo conventions plus a smell baseline from Fowler's *Refactoring*) and **Spec** (does it do what was actually asked?). Neither is allowed to mask the other.
+- **[code-review](skills/code-spec-review/SKILL.md)** *(model)* — review a diff along two axes kept deliberately separate: **Standards** (repo conventions plus a smell baseline from Fowler's *Refactoring*) and **Spec** (does it do what was actually asked?). Neither is allowed to mask the other.
 
 ### On-ramps
 

@@ -14,14 +14,14 @@ against what we took (see [Checking for upstream changes](#checking-for-upstream
 
 | File here | Derived from | Copied at | Relationship |
 |-----------|--------------|-----------|--------------|
-| `skills/tdd/SKILL.md` | `skills/engineering/tdd/SKILL.md` | `9603c1c` | Adapted; sibling `tests.md`/`mocking.md` moved to `references/` with context pointers repointed and reworded to say when each loads, description collapsed its "red-green-refactor" synonym, links added to `codebase-design` and `code-review` |
+| `skills/tdd/SKILL.md` | `skills/engineering/tdd/SKILL.md` | `9603c1c` | Adapted; sibling `tests.md`/`mocking.md` moved to `references/` with context pointers repointed and reworded to say when each loads, description collapsed its "red-green-refactor" synonym, links added to `codebase-design` and `code-spec-review` |
 | `skills/tdd/references/good-and-bad-tests.md` | `skills/engineering/tdd/tests.md` | `9603c1c` | Verbatim; renamed to say what it holds and moved under `references/` |
 | `skills/tdd/references/mocking.md` | `skills/engineering/tdd/mocking.md` | `9603c1c` | Moved under `references/`; prose unchanged, bold pseudo-headings promoted to `###` for `MD036` |
 | `skills/grilling/SKILL.md` | `skills/productivity/grilling/SKILL.md` | `9603c1c` | Adapted; body H1 added, redundant `'grill'` trigger branch dropped from the description, plus a local stopping heuristic keyed to the stakes of the decision |
 | `skills/to-spec/SKILL.md` | `skills/engineering/to-spec/SKILL.md` | `9603c1c` | Adapted; tracker renamed to `/setup-skills` and the setup gate replaced by a local-markdown fallback at the publish step, plus a local handoff to `to-tickets` and `implement` |
 | `skills/to-tickets/SKILL.md` | `skills/engineering/to-tickets/SKILL.md` | `9603c1c` | Adapted; tracker renamed to `/setup-skills`, setup gate replaced with a local-markdown default restated at the publish step, both backends kept, description rewritten human-facing |
-| `skills/code-review/SKILL.md` | `skills/engineering/code-review/SKILL.md` | `9603c1c` | Adapted; setup gate replaced with a local-markdown tracker fallback at first tracker use, `codebase-design` pointer added, description triggers collapsed, smell baseline kept inline |
-| `skills/implement/SKILL.md` | `skills/engineering/implement/SKILL.md` | `9603c1c` | Adapted; `/tdd` and `/code-review` turned into cross-skill links, `to-spec`/`to-tickets` named as inputs, ticket-fetch paragraph added with the local-markdown tracker fallback |
+| `skills/code-spec-review/SKILL.md` | `skills/engineering/code-review/SKILL.md` | `9603c1c` | Adapted; renamed from `code-review`, which a Claude Code built-in shadows; setup gate replaced with a local-markdown tracker fallback at first tracker use, `codebase-design` pointer added, description triggers collapsed, smell baseline kept inline |
+| `skills/implement/SKILL.md` | `skills/engineering/implement/SKILL.md` | `9603c1c` | Adapted; `/tdd` and `/code-spec-review` turned into cross-skill links, `to-spec`/`to-tickets` named as inputs, ticket-fetch paragraph added with the local-markdown tracker fallback |
 | `skills/resolving-merge-conflicts/SKILL.md` | `skills/engineering/resolving-merge-conflicts/SKILL.md` | `9603c1c` | Adapted; procedure kept verbatim, `# H1` added for `MD041`, description rewritten to front-load its leading word |
 | `skills/setup-skills/SKILL.md` | `skills/engineering/setup-matt-pocock-skills/SKILL.md` | `9603c1c` | Adapted; renamed and de-branded, reframed from a mandatory first run into opt-in configuration over a local-markdown default |
 | `skills/setup-skills/references/issue-tracker-local.md` | `skills/engineering/setup-matt-pocock-skills/issue-tracker-local.md` | `9603c1c` | Reproduced; noted as the unconfigured default rather than one option among equals, and the Wayfinding section's `<effort>` namespace reconciled with Conventions' `<feature-slug>`, with decision tickets moved to `wayfinding/` so they cannot collide with `issues/` on `NN` |
@@ -104,6 +104,6 @@ SOFTWARE.
 
 ## Book-derived material
 
-`skills/code-review/SKILL.md` names the code smells catalogued in Martin Fowler's *Refactoring*
+`skills/code-spec-review/SKILL.md` names the code smells catalogued in Martin Fowler's *Refactoring*
 (ch. 3). The wording of each entry comes from Matt Pocock's compression of that catalogue (see the
 table above), not from the book itself; the book remains the property of its author and publisher.
