@@ -21,3 +21,14 @@ repos:
       - id: trailing-whitespace
         args: [--markdown-linebreak-ext=md]
       - id: check-yaml
+
+  # Roster consistency — the things that fail silently. See the script's header
+  # for what each check catches and why it earned its place.
+  - repo: local
+    hooks:
+      - id: check-consistency
+        name: skills roster consistency
+        entry: bash scripts/check-consistency.sh
+        language: system
+        pass_filenames: false
+        always_run: true

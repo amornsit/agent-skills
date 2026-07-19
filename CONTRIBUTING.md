@@ -16,10 +16,22 @@ means updating, in the same commit:**
 - `README.md` — "Skills here"
 - `NOTICE.md` — the provenance table
 
-Nothing keeps these in sync automatically. A router that never mentions a new skill, or still routes
-to a deleted one, is a router that lies — and it fails silently. This rule has already been broken
-twice: upstream's own router omits `resolving-merge-conflicts`, and the `code-review` →
-`code-spec-review` rename here updated six surfaces but missed the README label.
+A router that never mentions a new skill, or still routes to a deleted one, is a router that lies —
+and it fails silently. This rule has already been broken twice: upstream's own router omits
+`resolving-merge-conflicts`, and the `code-review` → `code-spec-review` rename here updated six
+surfaces but missed the README label.
+
+[`scripts/check-consistency.sh`](scripts/check-consistency.sh) enforces it, along with the other
+conventions below, in both the pre-commit hook and CI. Run it directly any time:
+
+```sh
+bash scripts/check-consistency.sh
+```
+
+Two things it cannot do. Its built-in collision list is hand-maintained and will go stale — it is a
+smoke alarm, not a guarantee, and the real test is loading the skills in a live session and counting
+what registers. And it cannot judge prose: a description that over-promises what its body delivers
+passes cleanly.
 
 ## Conventions a new skill must follow
 

@@ -17,6 +17,13 @@ jobs:
           # Rules and the templates/ ignore come from .markdownlint-cli2.jsonc.
           globs: "**/*.md"
 
+  consistency:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check roster consistency
+        run: bash scripts/check-consistency.sh
+
   links:
     runs-on: ubuntu-latest
     steps:

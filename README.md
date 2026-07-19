@@ -110,6 +110,11 @@ Markdown style and links are checked automatically — there's no Python or Node
 - **In CI:** [`.github/workflows/lint.yml`](.github/workflows/lint.yml) runs `markdownlint-cli2`
   plus [`lychee`](https://github.com/lycheeverse/lychee) dead-link checking on every push and PR.
 
+Style and links are the easy half. [`scripts/check-consistency.sh`](scripts/check-consistency.sh)
+covers what fails *silently* — a router that no longer mentions a skill, a skill user-invoked in one
+harness and model-invoked in another, a name a harness built-in shadows. It runs in both the git hook
+and CI, and every check in it maps to a defect that actually shipped.
+
 ## License
 
 [MIT](LICENSE) — use, copy, and adapt these skills freely.
