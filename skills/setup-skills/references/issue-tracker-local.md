@@ -28,10 +28,16 @@ Read the file at the referenced path. The user will normally pass the path or th
 
 Used by `/wayfinder`. The **map** is a file with one **child** file per ticket.
 
-- **Map**: `.scratch/<effort>/map.md` — the Notes / Decisions-so-far / Fog body.
-- **Child ticket**: `.scratch/<effort>/issues/NN-<slug>.md`, numbered from `01`, with the question in the body. A `Type:` line records the ticket type (`research`/`prototype`/`grilling`/`task`); a `Status:` line records `claimed`/`resolved`.
+A wayfinder *effort* is a feature under the convention above — it takes a `<feature-slug>` directory
+and obeys the same slug-ownership rule. Wayfinder usually writes first and so picks the slug; a
+later `/to-spec` or `/to-tickets` run for the same feature reuses that directory rather than opening
+a second one. Decision tickets keep their **own** numbering under `wayfinding/`, separate from the
+implementation tickets in `issues/`, so the two never collide on `NN`.
+
+- **Map**: `.scratch/<feature-slug>/map.md` — the Notes / Decisions-so-far / Fog body. A peer of `spec.md`.
+- **Child ticket**: `.scratch/<feature-slug>/wayfinding/NN-<slug>.md`, numbered from `01`, with the question in the body. A `Type:` line records the ticket type (`research`/`prototype`/`grilling`/`task`); a `Status:` line records `claimed`/`resolved`.
 - **Blocking**: a `Blocked by: NN, NN` line near the top. A ticket is unblocked when every file it lists is `resolved`.
-- **Frontier**: scan `.scratch/<effort>/issues/` for files that are open, unblocked, and unclaimed; first by number wins.
+- **Frontier**: scan `.scratch/<feature-slug>/wayfinding/` for files that are open, unblocked, and unclaimed; first by number wins.
 - **Claim**: set `Status: claimed` and save before any work.
 - **Resolve**: append the answer under an `## Answer` heading, set `Status: resolved`, then append a context pointer (gist + link) to the map's Decisions-so-far in `map.md`.
 
@@ -39,4 +45,6 @@ Used by `/wayfinder`. The **map** is a file with one **child** file per ticket.
 
 *Adapted from Matt Pocock's "setup-matt-pocock-skills" skill (github.com/mattpocock/skills) — MIT ©
 Matt Pocock. Reproduced, with a note added that this backend is the unconfigured default rather than
-one option among equals. See [NOTICE.md](../../../NOTICE.md).*
+one option among equals, and the Wayfinding section's `<effort>` namespace reconciled with the
+Conventions section's `<feature-slug>` — decision tickets moved to `wayfinding/` so they no longer
+collide with `issues/` on `NN` (a local extension). See [NOTICE.md](../../../NOTICE.md).*

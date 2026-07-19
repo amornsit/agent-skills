@@ -97,7 +97,8 @@ A skill is user-invoked in **both** harnesses or neither. Keep these in sync:
   duplication — collapse them.
 - `disable-model-invocation` is a Claude Code field and is inert elsewhere. It is permitted in
   `SKILL.md` because it is declarative metadata, not instruction. The portability principle bans
-  vendor-specific instructions **in the procedure body** — that ban still stands.
+  vendor-specific instructions **in the procedure body** — that ban still stands. The same reasoning
+  covers any other declarative frontmatter key upstream carries, such as `argument-hint`: keep them.
 - `interface.short_description` in `agents/openai.yaml` is a **human-facing blurb for a skill
   picker**, not a copy of `description`. Write it fresh: under ~60 characters, no trigger phrasing,
   no trailing period. Rewriting upstream's is expected and needs no justification.
@@ -126,9 +127,21 @@ fallback and say so in your report rather than leaving the write unpinned.
   who jumps straight to the publish step must still meet it there.
 - Name `setup-skills` as a bare slash command (`/setup-skills`) rather than linking its `SKILL.md`.
   The tracker skills mention it in passing; a link implies the reader should go read it.
-- The local backend is already specified upstream in `issue-tracker-local.md` and matches the
-  convention this repo used before the port: `.scratch/<feature-slug>/spec.md` and
-  `.scratch/<feature-slug>/issues/NN-<slug>.md`. Do not reinvent it.
+- The local backend is specified in `skills/setup-skills/references/issue-tracker-local.md` — the
+  single source of truth for it. **Read that file rather than reinventing the paths.** One directory
+  per feature, its slug chosen by whichever skill writes first and reused by every skill after:
+
+  ```text
+  .scratch/<feature-slug>/spec.md                  # to-spec
+  .scratch/<feature-slug>/map.md                   # wayfinder
+  .scratch/<feature-slug>/issues/NN-<slug>.md      # to-tickets, implement
+  .scratch/<feature-slug>/wayfinding/NN-<slug>.md  # wayfinder decision tickets
+  ```
+
+  Decision tickets and implementation tickets keep **separate numbering** — both count from `01`, so
+  sharing `issues/` would let `to-tickets` overwrite `wayfinder`'s resolved decisions.
+- **Mentioning a tracker artifact by path or URL is not a write.** A skill that only reads or cites
+  one does not join this list.
 
 ## 4. Naming
 
@@ -141,6 +154,8 @@ fallback and say so in your report rather than leaving the write unpinned.
   that is expected and is not a reason to weaken the link. `lychee` runs once when the roster is
   complete, not per skill. "Freely" governs *whether the target existing yet matters* — not how many
   links to add.
+- **Link a target once per skill**, at the first place the text names it. Later mentions stay prose —
+  three links to the same file is noise, not navigation.
 - **Add a link only where the text already implies the handoff.** Convert a slash command or a named
   skill into a link; follow a reach clause in the target's own description where the subject genuinely
   matches. Do not wire in neighbouring skills because the workflow suggests they belong — a glue skill
@@ -152,8 +167,13 @@ fallback and say so in your report rather than leaving the write unpinned.
 
 ## 5. Aliases
 
-A thin alias skill earns a slot only when it **composes** skills or fixes a genuinely bad trigger —
-never for a nicer name alone. Ported aliases: `grill-me`, `grill-with-docs`.
+A thin alias skill earns a slot when it **composes** skills or fixes a genuinely bad trigger.
+`grill-with-docs` qualifies on composition. `grill-me` does not — it is a nicer name for a directly
+typeable command — and is ported as a **deliberate exception**, because `grilling` is model-invoked
+and so carries a model-facing description, leaving no clean human-facing entry in the picker.
+
+Treat that as the bar for any future alias: composition, a broken trigger, or a model-invoked skill
+with no human-facing entry point. Not preference.
 
 ## 6. Attribution
 
@@ -177,6 +197,10 @@ Every ported file gets a footer:
 - **Removals count as local changes too.** De-vendoring a harness-specific instruction, or dropping
   upstream guidance, is exactly the kind of hunk a reader would otherwise misread as cosmetic. Name
   it.
+- **"Reproduced verbatim" is a complete sentence.** When a port is deliberately unchanged, say so
+  plainly. Never invent an adaptation to fill the slot.
+- **Editing a file another skill owns** — as `wayfinder` did to `issue-tracker-local.md` — means
+  updating that file's footer and its `NOTICE.md` row too, not your own.
 
 Add a row to `NOTICE.md` with **File here**, **Derived from**, **Copied at** (`9603c1c`), and
 **Relationship** — a short phrase describing the adaptation, matching the footer.

@@ -39,20 +39,50 @@ If an agent has no skills directory, the procedure still works read as-is: point
 
 ## Skills here
 
-> **Port in progress.** The full set of 23 skills is being re-adapted together against
-> [`docs/import-policy.md`](docs/import-policy.md). Skills marked *verbatim* below are currently
-> unmodified upstream copies awaiting adaptation — the descriptions here describe the intended
-> result, not what is on disk today. See `NOTICE.md` for per-file status.
+All 22 derive from [mattpocock/skills](https://github.com/mattpocock/skills), ported under
+[`docs/import-policy.md`](docs/import-policy.md). Start with
+**[which-skill](skills/which-skill/SKILL.md)** if you don't know which one you want — it is the
+router over everything below and how the flows connect.
 
-- **[tdd](skills/tdd/SKILL.md)** — test-driven development: build features and fix bugs test-first, red-green-refactor. Reference material on [good and bad tests](skills/tdd/references/good-and-bad-tests.md) and [mocking](skills/tdd/references/mocking.md). Adapted from Matt Pocock's *tdd* skill.
-- **[grilling](skills/grilling/SKILL.md)** — grill the user relentlessly about a plan, decision, or idea to stress-test their thinking, one question at a time. Adapted from Matt Pocock's *grilling* skill, extended with a facts-first opening move, a stopping heuristic keyed to the stakes, and a nudge toward structured question tools.
-- **[to-spec](skills/to-spec/SKILL.md)** — synthesize a converged conversation into a spec — problem, solution, user stories, and the implementation and testing decisions already settled — written to `.scratch/<feature-slug>/spec.md`. No interview: it writes down a decision that was already made, and confirms only the test seams. Adapted from Matt Pocock's *to-spec* skill, stripped to local markdown output.
-- **[to-tickets](skills/to-tickets/SKILL.md)** — break a plan or conversation into tracer-bullet vertical slices, each sized to one context window and declaring the tickets that block it, written to `.scratch/` as one markdown file per ticket. Includes the expand–contract sequence for wide refactors that can't be vertically sliced. Adapted from Matt Pocock's *to-tickets* skill, stripped to local markdown output.
-- **[code-review](skills/code-review/SKILL.md)** — review a diff along two axes kept deliberately separate: **Standards** (repo conventions plus a smell baseline from Fowler's *Refactoring*) and **Spec** (does it do what was actually asked?). Neither axis is allowed to mask the other. Adapted from Matt Pocock's *code-review* skill.
-- **[implement](skills/implement/SKILL.md)** — build the work from a spec or a set of `to-tickets` tickets: work the frontier one ticket at a time, drive real behaviour test-first with `tdd`, then check the result with `code-review`. The glue that connects the three. Adapted from Matt Pocock's *implement* skill.
-- **[resolving-merge-conflicts](skills/resolving-merge-conflicts/SKILL.md)** — resolve an in-progress git merge or rebase: understand each side's intent from its commits and PRs, preserve both where possible, run the project's checks, then finish. Adapted from Matt Pocock's *resolving-merge-conflicts* skill.
-- **[setup-skills](skills/setup-skills/SKILL.md)** — opt-in configuration for the skills that read or write an issue tracker: point them at GitHub, GitLab, or local markdown, set the triage label vocabulary, and choose the domain doc layout. Never a prerequisite — unconfigured, everything defaults to local markdown under `.scratch/`. Adapted from Matt Pocock's *setup-matt-pocock-skills* skill.
-- **[codebase-design](skills/codebase-design/SKILL.md)** — shared vocabulary for designing **deep modules**: a lot of behaviour behind a small interface, placed at a clean seam. Use when deciding where a seam goes, hunting deepening opportunities, or when another skill needs the deep-module language. Adapted from Matt Pocock's *codebase-design* skill.
+Grouped by how they are reached. **User-invoked** skills fire only when you type their name, so they
+cost no context; **model-invoked** skills can also fire on their own.
+
+### The main flow: idea → ship
+
+- **[grill-with-docs](skills/grill-with-docs/SKILL.md)** *(user)* — sharpen an idea by interview, leaving a paper trail in `CONTEXT.md` and ADRs. The on-ramp when you have a codebase.
+- **[to-spec](skills/to-spec/SKILL.md)** *(user)* — synthesize a converged conversation into a spec. No interview: it writes down a decision already made.
+- **[to-tickets](skills/to-tickets/SKILL.md)** *(user)* — split a spec or plan into tracer-bullet tickets, each sized to one context window and declaring its blocking edges.
+- **[implement](skills/implement/SKILL.md)** *(user)* — build a ticket or spec, driving `tdd` internally and closing with `code-review`.
+- **[tdd](skills/tdd/SKILL.md)** *(model)* — red → green at pre-agreed seams. Reference material on [good and bad tests](skills/tdd/references/good-and-bad-tests.md) and [mocking](skills/tdd/references/mocking.md).
+- **[code-review](skills/code-review/SKILL.md)** *(model)* — review a diff along two axes kept deliberately separate: **Standards** (repo conventions plus a smell baseline from Fowler's *Refactoring*) and **Spec** (does it do what was actually asked?). Neither is allowed to mask the other.
+
+### On-ramps
+
+- **[triage](skills/triage/SKILL.md)** *(user)* — move incoming issues and external PRs through a state machine of triage roles, ending in agent-ready briefs.
+- **[diagnosing-bugs](skills/diagnosing-bugs/SKILL.md)** *(model)* — refuses to theorise until it has one command that goes red on *this* bug, then fixes with a regression test.
+- **[wayfinder](skills/wayfinder/SKILL.md)** *(user)* — chart a huge, foggy effort as a shared map of decision tickets, resolved one at a time until the way is clear. Produces decisions, not deliverables.
+
+### Design and upkeep
+
+- **[improve-codebase-architecture](skills/improve-codebase-architecture/SKILL.md)** *(user)* — scan for deepening opportunities, present them as a visual HTML report, then grill through the one you pick.
+- **[codebase-design](skills/codebase-design/SKILL.md)** *(model)* — the deep-module vocabulary: a lot of behaviour behind a small interface at a clean seam.
+- **[domain-modeling](skills/domain-modeling/SKILL.md)** *(model)* — sharpen the project's domain language and record hard-to-reverse decisions as ADRs.
+- **[prototype](skills/prototype/SKILL.md)** *(model)* — a throwaway program answering one design question. Keep the answer, delete the code.
+
+### Standalone
+
+- **[grilling](skills/grilling/SKILL.md)** *(model)* — interrogate a plan one question at a time, resolving the decision tree in dependency order. The primitive beneath both grill wrappers.
+- **[grill-me](skills/grill-me/SKILL.md)** *(user)* — the same interview with no codebase and no paper trail.
+- **[resolving-merge-conflicts](skills/resolving-merge-conflicts/SKILL.md)** *(model)* — recover why each side made its change, preserve both where possible, run the project's checks, then finish.
+- **[research](skills/research/SKILL.md)** *(model)* — delegate reading legwork to a sub-agent, which leaves a cited Markdown file behind.
+- **[handoff](skills/handoff/SKILL.md)** *(user)* — compact a conversation into a document a fresh session can pick up. Forks, where compaction continues.
+- **[teach](skills/teach/SKILL.md)** *(user)* — learn a concept over multiple sessions, using the current directory as a stateful workspace.
+- **[writing-great-skills](skills/writing-great-skills/SKILL.md)** *(user)* — the house style for writing skills: context load, information hierarchy, leading words, failure modes.
+
+### Configuration
+
+- **[setup-skills](skills/setup-skills/SKILL.md)** *(user)* — **optional.** Point the tracker-aware skills at GitHub, GitLab, or local markdown. Never a prerequisite: unconfigured, everything defaults to local markdown under `.scratch/`.
+- **[which-skill](skills/which-skill/SKILL.md)** *(user)* — the router above.
 
 ## Provenance
 
