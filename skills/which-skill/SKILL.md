@@ -57,12 +57,17 @@ before `/to-tickets`, don't push on degraded — `/handoff` and continue in a fr
 
 A starting situation that generates work, then merges onto the main flow.
 
+- **Something to record, right now** → [`/file-ticket`](../file-ticket/SKILL.md). A bug you just hit
+  or a feature you just thought of, filed as **one** ticket with one round of questions and no spec.
+  It's the cheapest way in: the ticket lands in `needs-triage` and waits for `/triage` below. Reach
+  for the main flow instead when the idea is a whole feature rather than a single ticket.
+
 - **Bugs and requests piling up** → [`/triage`](../triage/SKILL.md). It moves issues through triage
   roles and produces agent-ready issues, which `/implement` later picks up.
 
-  Triage is only for issues **you didn't create** — bug reports, incoming feature requests, anything
-  that arrives raw. Tickets that `/to-tickets` produced are already agent-ready, so **don't triage
-  them**.
+  Triage is for issues that arrived **raw** — incoming bug reports and feature requests, and the
+  ones `/file-ticket` recorded for you, which land in `needs-triage` by design. Tickets that
+  `/to-tickets` produced are already agent-ready, so **don't triage them**.
 
 - **Something's broken** → [`/diagnosing-bugs`](../diagnosing-bugs/SKILL.md). For the hard ones: the
   bug that resists a first glance, the intermittent flake, the regression that crept in between two

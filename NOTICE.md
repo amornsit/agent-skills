@@ -102,6 +102,18 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ```
 
+## Original to this repo
+
+The following files are **not** derived from third-party work. They are MIT licensed under this
+repository's own [LICENSE](LICENSE) and carry no upstream attribution footer. They may still *use*
+vocabulary and conventions that arrived here via the ported skills — that reuse is internal, and
+covered by the notices above.
+
+| File here | Notes |
+|-----------|-------|
+| `skills/file-ticket/SKILL.md` | Written for this repo. Reuses the triage category/state role names and the local-markdown tracker layout, both of which originate in the ported skills above |
+| `skills/file-ticket/agents/openai.yaml` | Written for this repo |
+
 ## Book-derived material
 
 `skills/code-spec-review/SKILL.md` names the code smells catalogued in Martin Fowler's *Refactoring*

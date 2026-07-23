@@ -38,8 +38,8 @@ If an agent has no skills directory, the procedure still works read as-is: point
 
 ## Skills here
 
-All 22 derive from [mattpocock/skills](https://github.com/mattpocock/skills), ported under
-[`CONTRIBUTING.md`](CONTRIBUTING.md). Start with
+22 of the 23 derive from [mattpocock/skills](https://github.com/mattpocock/skills), ported under
+[`CONTRIBUTING.md`](CONTRIBUTING.md); `file-ticket` is original to this repo. Start with
 **[which-skill](skills/which-skill/SKILL.md)** if you don't know which one you want — it is the
 router over everything below and how the flows connect.
 
@@ -57,6 +57,7 @@ cost no context; **model-invoked** skills can also fire on their own.
 
 ### On-ramps
 
+- **[file-ticket](skills/file-ticket/SKILL.md)** *(user)* — record one bug or feature request as a single ticket, with one round of questions and no spec. Lands in `needs-triage` for `triage` to pick up.
 - **[triage](skills/triage/SKILL.md)** *(user)* — move incoming issues and external PRs through a state machine of triage roles, ending in agent-ready briefs.
 - **[diagnosing-bugs](skills/diagnosing-bugs/SKILL.md)** *(model)* — refuses to theorise until it has one command that goes red on *this* bug, then fixes with a regression test.
 - **[wayfinder](skills/wayfinder/SKILL.md)** *(user)* — chart a huge, foggy effort as a shared map of decision tickets, resolved one at a time until the way is clear. Produces decisions, not deliverables.

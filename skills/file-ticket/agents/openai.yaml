@@ -1,0 +1,5 @@
+interface:
+  display_name: "File Ticket"
+  short_description: "File one bug report or feature request, no plan needed"
+policy:
+  allow_implicit_invocation: false

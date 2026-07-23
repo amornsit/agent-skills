@@ -76,7 +76,7 @@ done
 # --- 4. tracker fallback ------------------------------------------------------
 head_ "4. Tracker skills degrade to local markdown when unconfigured"
 before=$fail
-for n in to-spec to-tickets triage wayfinder code-spec-review implement prototype; do
+for n in to-spec to-tickets triage wayfinder code-spec-review implement prototype file-ticket; do
   # The sentence wraps across lines, so normalise whitespace before matching.
   tr '\n' ' ' < "skills/$n/SKILL.md" | grep -q 'no tracker has been configured' \
     || note "$n missing the local-markdown fallback"
@@ -84,11 +84,20 @@ done
 [ $fail -eq $before ] && ok
 
 # --- 5 & 6. attribution and footer depth --------------------------------------
+# Files written here, rather than ported, have nothing upstream to attribute.
+# They declare themselves in NOTICE.md's "Original to this repo" table and are
+# held to the NOTICE-row requirement only. Anything NOT in that table is assumed
+# ported and must carry a footer — so a genuinely new file that forgets to
+# declare itself still fails loudly.
+originals=$(awk '/^## Original to this repo/{o=1; next} /^## /{o=0} o' NOTICE.md \
+  | grep -oE '^\| `[^`]+`' | tr -d '|` ')
+
 head_ "5 & 6. Every ported file is attributed, at the right link depth"
 before=$fail
 while read -r f; do
+  grep -q "\`$f\`" NOTICE.md || note "$f has no NOTICE.md row"
+  if printf '%s\n' "$originals" | grep -qx "$f"; then continue; fi
   grep -q 'mattpocock' "$f" || note "$f has no attribution footer"
-  grep -q "\`$f\`"  NOTICE.md || note "$f has no NOTICE.md row"
   case "$f" in
     skills/*/references/*) want='../../../NOTICE.md' ;;
     *)                     want='../../NOTICE.md'    ;;
