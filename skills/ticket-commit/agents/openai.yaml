@@ -1,0 +1,5 @@
+interface:
+  display_name: "Ticket Commit"
+  short_description: "Commit against a ticket, note the thread, close when done"
+policy:
+  allow_implicit_invocation: false

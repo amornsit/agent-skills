@@ -130,13 +130,21 @@ changes the target).
   create a new slug only when nothing matches, and ask rather than guess when two plausibly match.
   `NN` continues that directory's existing numbering. Use the template below.
 - **A hosted issue tracker (GitHub, Linear, …)** → open one issue with the same body, and apply the
-  category role (`bug`/`enhancement`) and the state role `needs-triage` as labels.
+  category role (`bug`/`enhancement`) as a label.
 
-Tickets filed here land in **`needs-triage`**, never `ready-for-agent` — and the codebase scout does
-not change that. A scout locates the request; it does not **verify** it. Nobody has reproduced the
-bug, confirmed the diagnosis, or written acceptance criteria, and those are what make a brief
-agent-ready. Labelling a located-but-unverified ticket `ready-for-agent` sends an agent off to build
-against a guess.
+**Which status depends on who the ticket is for**, and it is the one judgement call at this step:
+
+- **Yours to work** — you found the bug, you want the feature. File it **`open`**. There is no
+  evaluation pending: you are the one who decided it matters, and the next thing that happens to it
+  is work. Pick this by default when the user is filing their own request.
+- **Someone else's request**, or yours but genuinely undecided → file it **`needs-triage`** and hand
+  it to [`/triage`](../triage/SKILL.md). That is the state machine's entry point, and it exists
+  because a request from outside needs evaluating before anyone spends a day on it.
+
+Either way, never `ready-for-agent`. A scout locates a request; it does not **verify** one. Nobody
+has reproduced the bug, confirmed the diagnosis, or written acceptance criteria — and those are what
+make a brief agent-ready. Labelling a located-but-unverified ticket `ready-for-agent` sends an agent
+off to build against a guess.
 
 <ticket-template>
 
@@ -145,7 +153,7 @@ against a guess.
 
 **Type:** bug | enhancement
 
-**Status:** needs-triage
+**Status:** open | needs-triage
 
 **Filed fast:** no codebase scout, no duplicate check — include this line only when step 1's fast
 path was taken, and omit it entirely otherwise.
@@ -165,7 +173,7 @@ mark anything uncertain as such.
 1. step
 2. step
 
-**Open questions:** anything asked but not answered, so triage doesn't re-ask it blind.
+**Open questions:** anything asked but not answered, so whoever picks it up doesn't re-ask blind.
 
 ## Comments
 ```
@@ -181,7 +189,12 @@ hosted tracker the comment thread plays the same role, so omit the heading there
 ### 7. Hand off
 
 Report where the ticket landed — the file path or the issue URL — and stop. Don't start work on it.
-When the user is ready to evaluate what's piled up, that's [`/triage`](../triage/SKILL.md).
+Where it goes next depends on the status you just chose:
+
+- **`open`** → work it whenever you're ready, committing against it with
+  [`/ticket-commit`](../ticket-commit/SKILL.md), which references the ticket from every commit and
+  closes it when the work lands.
+- **`needs-triage`** → [`/triage`](../triage/SKILL.md), when you're ready to evaluate what's piled up.
 
 The ticket is now the **durable context layer** for this piece of work, not an inbox row. Everything
 that happens next appends to it: triage notes, decisions and what was considered and rejected, links

@@ -76,7 +76,8 @@ done
 # --- 4. tracker fallback ------------------------------------------------------
 head_ "4. Tracker skills degrade to local markdown when unconfigured"
 before=$fail
-for n in to-spec to-tickets triage wayfinder code-spec-review implement prototype file-ticket; do
+for n in to-spec to-tickets triage wayfinder code-spec-review implement prototype file-ticket \
+         ticket-commit; do
   # The sentence wraps across lines, so normalise whitespace before matching.
   tr '\n' ' ' < "skills/$n/SKILL.md" | grep -q 'no tracker has been configured' \
     || note "$n missing the local-markdown fallback"

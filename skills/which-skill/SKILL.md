@@ -59,8 +59,17 @@ A starting situation that generates work, then merges onto the main flow.
 
 - **Something to record, right now** → [`/file-ticket`](../file-ticket/SKILL.md). A bug you just hit
   or a feature you just thought of, filed as **one** ticket with one round of questions and no spec.
-  It's the cheapest way in: the ticket lands in `needs-triage` and waits for `/triage` below. Reach
-  for the main flow instead when the idea is a whole feature rather than a single ticket.
+  The cheapest way in. A request from someone else lands in `needs-triage` and waits for `/triage`
+  below; your own lands `open`, ready to work. Reach for the main flow instead when the idea is a
+  whole feature rather than a single ticket.
+
+  From an `open` ticket, the **ticket-centred loop** is the lightweight alternative to the main flow:
+  work the ticket, and commit against it with
+  [`/ticket-commit`](../ticket-commit/SKILL.md) — each commit references the ticket and appends a
+  working note to its thread, until the commit that meets the acceptance criteria closes it. The
+  ticket, not the commit log, holds the reasoning. Where the main flow front-loads the thinking into
+  a spec, this one accumulates it in a thread as the work happens: reach for it on a single
+  well-understood change, and for the main flow when the work needs decomposing before it can start.
 
 - **Bugs and requests piling up** → [`/triage`](../triage/SKILL.md). It moves issues through triage
   roles and produces agent-ready issues, which `/implement` later picks up.
