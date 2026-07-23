@@ -107,6 +107,29 @@ checklist, tick the boxes as part of this step, and if any remain unticked, **do
 which and commit as normal. A ticket closed with work outstanding is worse than one left open,
 because nobody looks at it again.
 
+**A ticket filed by [`/file-ticket`](../file-ticket/SKILL.md) usually has no criteria at all** — it
+records a request, not a contract, and nothing in this pipeline writes one. That's the common case,
+not the exception, so don't read an empty checklist as "nothing left to satisfy."
+
+When there are none, **write them before closing**, in this order:
+
+1. Propose what *done* means for this ticket — two to four concrete, checkable statements, drawn
+   from the request and from what the work actually turned out to involve. "The export button
+   downloads a CSV of the current filter" — not "export works."
+2. Show them to the user and get agreement. They may well say the scope moved, which is exactly the
+   conversation worth having *before* the ticket closes rather than after.
+3. Append them to the ticket, then verify them the same way you would criteria that had been there
+   all along.
+
+This is not ceremony. Criteria written at the end still do the two jobs that matter: they force the
+question "is this actually finished?" to be answered out loud, and they leave a closed ticket that
+says what shipped rather than only what was once wanted. Writing them earlier is better — if the
+scope is clear before you start, propose them on the **first** `ticket-commit` against the ticket
+instead of the last.
+
+If the work sprawled beyond the original request, don't stretch the criteria to cover it. Close this
+ticket on what it asked for and file the rest with `/file-ticket`.
+
 Closing means, in this order:
 
 1. The commit uses the tracker's closing keyword (`Closes #123`), or on local markdown the `Status:`
@@ -124,7 +147,8 @@ again on the next commit.
 ## What this is not
 
 - It doesn't decide **what** to build — that's the ticket's job, and
-  [`/file-ticket`](../file-ticket/SKILL.md) files one.
+  [`/file-ticket`](../file-ticket/SKILL.md) files one. It does pin down what **done** means when the
+  ticket never said (step 5), because something has to before a ticket can honestly close.
 - It doesn't review the work. Reach for [`/code-spec-review`](../code-spec-review/SKILL.md) before
   closing anything substantial; it will find the ticket through the very references this skill wrote.
 - It doesn't push, open a PR, or release. Committing is where it stops.
