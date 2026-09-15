@@ -38,8 +38,9 @@ If an agent has no skills directory, the procedure still works read as-is: point
 
 ## Skills here
 
-22 of the 24 derive from [mattpocock/skills](https://github.com/mattpocock/skills), ported under
-[`CONTRIBUTING.md`](CONTRIBUTING.md); `file-ticket` and `ticket-commit` are original to this repo.
+22 of the 25 derive from [mattpocock/skills](https://github.com/mattpocock/skills), ported under
+[`CONTRIBUTING.md`](CONTRIBUTING.md); `file-ticket`, `ticket-commit`, and `trace-code-flow` are
+original to this repo.
 Start with
 **[which-skill](skills/which-skill/SKILL.md)** if you don't know which one you want — it is the
 router over everything below and how the flows connect.
@@ -73,6 +74,8 @@ cost no context; **model-invoked** skills can also fire on their own.
 
 ### Standalone
 
+- **[trace-code-flow](skills/trace-code-flow/SKILL.md)** *(model)* — explain a folder or feature as
+  a diagram of real file-and-symbol boxes connected by labeled execution-flow arrows.
 - **[grilling](skills/grilling/SKILL.md)** *(model)* — interrogate a plan one question at a time, resolving the decision tree in dependency order. The primitive beneath both grill wrappers.
 - **[grill-me](skills/grill-me/SKILL.md)** *(user)* — the same interview with no codebase and no paper trail.
 - **[resolving-merge-conflicts](skills/resolving-merge-conflicts/SKILL.md)** *(model)* — recover why each side made its change, preserve both where possible, run the project's checks, then finish.
@@ -94,7 +97,7 @@ attribution — which also records the decisions behind them and how to re-sync 
 **Read its roster-maintenance rule before adding, removing, or renaming a skill**: `which-skill`,
 this list, and `NOTICE.md` are hand-maintained and go stale silently.
 
-Every skill here now derives from [mattpocock/skills](https://github.com/mattpocock/skills). Book
+The 22 ported skills derive from [mattpocock/skills](https://github.com/mattpocock/skills). Book
 summaries and source notes live in the
 [knowledge-accumulation](https://github.com/amornsit/knowledge-accumulation) repo, which remains the
 home for that material.
@@ -122,13 +125,14 @@ and CI, and every check in it maps to a defect that actually shipped.
 
 [MIT](LICENSE) — use, copy, and adapt these skills freely.
 
-**Every skill in this repository derives from [Matt Pocock](https://github.com/mattpocock)'s
+**The 22 ported skills in this repository derive from [Matt Pocock](https://github.com/mattpocock)'s
 [mattpocock/skills](https://github.com/mattpocock/skills), used under the MIT licence and
 © 2026 Matt Pocock.** The procedures are substantially his: measured against upstream `9603c1c`,
 the median skill is ~89% his prose word-for-word, and the largest ones — the ones carrying most of
 the instruction — run 84–98%.
 
-What is ours is the plumbing around them: a local-markdown default for every skill that reads or
+`file-ticket`, `ticket-commit`, and `trace-code-flow` are original to this repository. What is ours
+around the ported skills is the plumbing: a local-markdown default for every skill that reads or
 writes issues, cross-skill links repointed into this repo, a two-harness invocation contract, and a
 handful of additions named individually in each file's footer. Those are catalogued per file in
 [NOTICE.md](NOTICE.md), which also reproduces his licence in full, and the rules behind them are in

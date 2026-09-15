@@ -139,6 +139,10 @@ let the skills above pull them in.
 
 Off the main flow entirely.
 
+- [`/trace-code-flow`](../trace-code-flow/SKILL.md) — explain a particular folder, package, feature,
+  or symbol as a map of real code units: every box names the file and function or class; every arrow
+  names the relationship it verifies. Use it when you want to understand how an area works before
+  changing it.
 - `/grill-me` — the same relentless interview as `/grill-with-docs`, but for when you have **no
   codebase**. Stateless: it saves nothing locally, builds no `CONTEXT.md`. Reach for it to sharpen
   any plan or design that doesn't live in a repo.

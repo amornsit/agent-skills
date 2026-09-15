@@ -1,0 +1,3 @@
+interface:
+  display_name: "Trace Code Flow"
+  short_description: "Map a code area's real execution flow"
