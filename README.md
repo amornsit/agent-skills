@@ -38,9 +38,9 @@ If an agent has no skills directory, the procedure still works read as-is: point
 
 ## Skills here
 
-22 of the 25 derive from [mattpocock/skills](https://github.com/mattpocock/skills), ported under
-[`CONTRIBUTING.md`](CONTRIBUTING.md); `file-ticket`, `ticket-commit`, and `trace-code-flow` are
-original to this repo.
+22 of the 26 derive from [mattpocock/skills](https://github.com/mattpocock/skills), ported under
+[`CONTRIBUTING.md`](CONTRIBUTING.md); `file-ticket`, `ticket-commit`, `trace-code-flow`, and
+`refactor-for-readability` are original to this repo.
 Start with
 **[which-skill](skills/which-skill/SKILL.md)** if you don't know which one you want — it is the
 router over everything below and how the flows connect.
@@ -67,6 +67,7 @@ cost no context; **model-invoked** skills can also fire on their own.
 
 ### Design and upkeep
 
+- **[refactor-for-readability](skills/refactor-for-readability/SKILL.md)** *(model)* — make existing code easier to understand through clearer names, flow, and organization while preserving behavior.
 - **[improve-codebase-architecture](skills/improve-codebase-architecture/SKILL.md)** *(user)* — scan for deepening opportunities, present them as a visual HTML report, then grill through the one you pick.
 - **[codebase-design](skills/codebase-design/SKILL.md)** *(model)* — the deep-module vocabulary: a lot of behaviour behind a small interface at a clean seam.
 - **[domain-modeling](skills/domain-modeling/SKILL.md)** *(model)* — sharpen the project's domain language and record hard-to-reverse decisions as ADRs.
@@ -131,10 +132,10 @@ and CI, and every check in it maps to a defect that actually shipped.
 the median skill is ~89% his prose word-for-word, and the largest ones — the ones carrying most of
 the instruction — run 84–98%.
 
-`file-ticket`, `ticket-commit`, and `trace-code-flow` are original to this repository. What is ours
-around the ported skills is the plumbing: a local-markdown default for every skill that reads or
-writes issues, cross-skill links repointed into this repo, a two-harness invocation contract, and a
-handful of additions named individually in each file's footer. Those are catalogued per file in
+`file-ticket`, `ticket-commit`, `trace-code-flow`, and `refactor-for-readability` are original to this
+repository. What is ours around the ported skills is the plumbing: a local-markdown default for every
+skill that reads or writes issues, cross-skill links repointed into this repo, a two-harness invocation
+contract, and a handful of additions named individually in each file's footer. Those are catalogued per file in
 [NOTICE.md](NOTICE.md), which also reproduces his licence in full, and the rules behind them are in
 [`CONTRIBUTING.md`](CONTRIBUTING.md).
 

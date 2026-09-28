@@ -1,0 +1,3 @@
+interface:
+  display_name: "Refactor for Readability"
+  short_description: "Make existing code easier for humans to understand"

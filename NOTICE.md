@@ -111,6 +111,8 @@ covered by the notices above.
 
 | File here | Notes |
 |-----------|-------|
+| `skills/refactor-for-readability/SKILL.md` | Written for this repo. Refactor existing code for human readability while preserving observable behavior |
+| `skills/refactor-for-readability/agents/openai.yaml` | Written for this repo |
 | `skills/file-ticket/SKILL.md` | Written for this repo. Reuses the triage category/state role names and the local-markdown tracker layout, both of which originate in the ported skills above |
 | `skills/file-ticket/agents/openai.yaml` | Written for this repo |
 | `skills/ticket-commit/SKILL.md` | Written for this repo. Follows Simon Willison's ["The Perfect Commit"](https://simonwillison.net/2022/Oct/29/the-perfect-commit/) — a commit bundling implementation, tests, and docs, linked to an issue thread that carries the context — and writes to the tracker conventions the ported skills established |

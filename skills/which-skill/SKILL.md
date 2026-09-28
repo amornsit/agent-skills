@@ -103,6 +103,9 @@ A starting situation that generates work, then merges onto the main flow.
 
 Not feature work — upkeep.
 
+- [`/refactor-for-readability`](../refactor-for-readability/SKILL.md) — improve the human readability
+  of existing code while preserving behavior. Use it for confusing names, tangled control flow,
+  hidden effects, or logic that takes too much jumping around to understand.
 - `/improve-codebase-architecture` — run whenever you have a spare moment to keep the codebase good
   for agents to operate in. It surfaces **deepening opportunities**; picking one *generates an idea*
   you can take into the main flow at `/grill-with-docs`. It's the survey that finds the candidates;
